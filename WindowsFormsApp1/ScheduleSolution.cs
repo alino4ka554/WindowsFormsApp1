@@ -1,0 +1,186 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WindowsFormsApp1
+{
+    public class ScheduleSolution
+    {
+        public Dictionary<int, Operation> Operations { get; set; } = new Dictionary<int, Operation>();
+        public Dictionary<int, int> Projiects { get; set; } = new Dictionary<int, int>();
+        public Dictionary<int, Resource> Resources { get; set; } = new Dictionary<int, Resource>();
+        public double TotalTime { get; set; }
+        public double TotalCost { get; set; }
+        public List<List<int>> CriticalWays = new List<List<int>>();
+        public Dictionary<int, int> CounterOfOperations { get; set; } = new Dictionary<int, int>();
+        public Dictionary<int, List<int>> ResourceSequences { get; set; } = new Dictionary<int, List<int>>();
+        public Dictionary<(int, int), int> W { get; set; } = new Dictionary<(int, int), int>();
+
+        public ScheduleSolution(Dictionary<int, Operation> _operations, Dictionary<(int, int), double> pheromones)
+        {
+            Operations = _operations;
+            foreach (var phe in pheromones.Keys)
+            {
+                W.Add((phe), 0);
+            }
+            foreach (var op in Operations)
+                CounterOfOperations.Add(op.Key, 0);
+            InitializeResource();
+            //InitializeW();
+        }
+        public void InitializeW()
+        {
+            foreach (var op1 in Operations)
+            {
+                foreach (var op2 in Operations)
+                {
+                    if (op1.Key != op2.Key)
+                    {
+                        if (op1.Value.DependsOn.Contains(op2.Key))
+                            W[(op2.Key, op1.Key)] = 1;
+                    }
+                }
+            }
+        }
+        public void InitializeResource()
+        {
+            foreach (var op in Operations.Values)
+            {
+                if (!Resources.ContainsKey(op.Resource))
+                {
+                    Resources.Add(op.Resource, new Resource(op.Resource));
+                    ResourceSequences.Add(op.Resource, new List<int>());
+                }
+            }
+        }
+
+        public void AddToResource(int op, int res)
+        {
+            if (Resources[res].Operations.Count != 0)
+            {
+                if (Operations[op].StartTime < Resources[res].ReleaseTime)
+                {
+                    Operations[op].StartTime = Resources[res].ReleaseTime;
+
+                    ConstraintForBeginTime(op);
+                }
+                //foreach(var resId in ResourceSequences[res])
+                W[(ResourceSequences[res].Last(), op)] = 1;
+            }
+            Resources[res].Operations.Add(Operations[op]);
+            ResourceSequences[res].Add(op);
+        }
+
+        public void ConstraintForBeginTime(int OpId)
+        {
+            Operation op = Operations[OpId];
+            var time = op.StartTime + op.NormalTime;
+            foreach (var kvp in Operations)
+            {
+                if (kvp.Key != OpId)
+                {
+                    if (Operations[kvp.Key].DependsOn.Contains(OpId))
+                    {
+
+                        if (time > Operations[kvp.Key].StartTime)
+                        {
+                            Operations[kvp.Key].StartTime = time;
+                            ConstraintForBeginTime(kvp.Key);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void RecalculateFrom(int opId)
+        {
+            var queue = new Queue<int>();
+            queue.Enqueue(opId);
+
+            while (queue.Count > 0)
+            {
+                int current = queue.Dequeue();
+
+                foreach (var op in Operations.Values)
+                {
+                    if (op.DependsOn.Contains(current))
+                    {
+                        double newStart = op.DependsOn
+                            .Max(prevId => Operations[prevId].EndTime);
+
+                        if (op.StartTime != newStart)
+                        {
+                            op.StartTime = newStart;
+
+                            queue.Enqueue(op.Id);
+                        }
+                    }
+                }
+            }
+            CalculateEndTime();
+        }
+        public void CalculateEndTime()
+        {
+            var operations = Operations;
+            var maxEndTime = 0.0;
+            foreach (var op in Operations.Values)
+            {
+                if (op.EndTime > maxEndTime)
+                    maxEndTime = op.EndTime;
+            }
+            TotalTime = maxEndTime;
+        }
+        public void FindCriticalWay()
+        {
+            //InitializeDependsForResource();
+            var lastOp = Operations.Values.Where(op => op.EndTime == TotalTime);
+            foreach (var ops in lastOp)
+            {
+                var criticalWay = new List<int> { ops.Id };
+                AddToCriticalWay(criticalWay, ops.Id);
+                if (Operations[criticalWay.First()].DependsOn.Count() == 0)
+                    CriticalWays.Add(criticalWay);
+            }
+        }
+        public void InitializeDependsForResource()
+        {
+            foreach (var w in W)
+            {
+                if (w.Value == 1)
+                {
+                    Operations[w.Key.Item2].DependsOn.Add(w.Key.Item1);
+                }
+
+            }
+        }
+        public void AddToCriticalWay(List<int> criticalWay, int op)
+        {
+            if (Operations[op].DependsOn.Count != 0)
+            {
+                foreach (var ops in Operations[op].DependsOn)
+                {
+                    if (Operations[ops].StartTime + Operations[ops].ActualTime == Operations[op].StartTime)
+                    {
+                        criticalWay.Insert(0, ops);
+                        AddToCriticalWay(criticalWay, ops);
+                    }
+                }
+            }
+        }
+        public void ConstraintForOneResource(int i, int j)
+        {
+            int w = W[(i, j)];
+            double T_i = Operations[i].StartTime;
+            double T_j = Operations[j].StartTime;
+            double t_i = Operations[i].NormalTime;
+            double t_j = Operations[j].NormalTime;
+            if (T_j - T_i - 999 * w <= -t_i && T_i - T_j + 999 * w <= 999 - t_j)
+                return;
+            else
+                W[(i, j)] = (w == 0) ? 1 : 0;
+        }
+
+    }
+}
