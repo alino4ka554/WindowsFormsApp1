@@ -54,8 +54,20 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Operation.cs" />
+    <Compile Include="OperationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperationAdd.Designer.cs">
+      <DependentUpon>OperationAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="ProjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectControl.Designer.cs">
+      <DependentUpon>ProjectControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -74,6 +86,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OperationAdd.resx">
+      <DependentUpon>OperationAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectControl.resx">
+      <DependentUpon>ProjectControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectItemControl.resx">
       <DependentUpon>ProjectItemControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +103,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -101,6 +120,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-project-5956597.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-business-reporting-12238483 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-business-reporting-12238483 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-business-reporting-12238483 %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-business-reporting-12238483 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-project-5956597 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-performance-8282837 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-calendar-8302434 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-schedule-6826122.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-project-5956597 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-user-7323280.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-back-left-arrow-circular-button-outline-54623.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

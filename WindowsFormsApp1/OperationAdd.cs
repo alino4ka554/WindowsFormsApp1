@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class ProjectItemControl : UserControl
+    public partial class OperationAdd : Form
     {
-        public ProjectItemControl(string name, int operations)
+        public OperationAdd()
         {
             InitializeComponent();
-
-            labelName.Text = name;
-            labelOperations.Text = $"Операций: {operations}";
-
         }
     }
 }
