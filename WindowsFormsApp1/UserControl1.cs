@@ -15,33 +15,32 @@ namespace WindowsFormsApp1
         public ProjectsControl()
         {
             InitializeComponent();
-            LoadProjects();
-            this.Resize += panelMain_Resize;
+            //this.Resize += panelMain_Resize;
         }
-        private void LoadProjects()
+        public void LoadProjects()
         {
-            flowLayoutPanel1.Controls.Clear();
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
 
+            // обычные колонки
+            dataGridView1.Columns.Add("Name", "Проект");
+            dataGridView1.Columns.Add("Tasks", "Кол-во задач");
+
+            // колонка с кнопкой
+            DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+            btnColumn.Name = "Edit";
+            btnColumn.HeaderText = "";
+            btnColumn.Text = "Редактировать";
+            btnColumn.UseColumnTextForButtonValue = true;
+
+            dataGridView1.Columns.Add(btnColumn);
+
+            // заполняем строки
             for (int i = 0; i < 5; i++)
             {
-                var item = new ProjectItemControl("Проект A", 10);
-                flowLayoutPanel1.Controls.Add(item);
+                dataGridView1.Rows.Add($"Проект {i + 1}", 10);
             }
         }
-        private void panelMain_Resize(object sender, EventArgs e)
-        {
-            int width = this.Width;
-
-            if (width < 800)
-                panel1.Width = width - 40;
-            else if (width < 1200)
-                panel1.Width = 700;
-            else
-                panel1.Width = 900;
-
-
-            this.panel1.Left = (this.Width - this.panel1.Width) / 2;
-            this.panel1.Top = 80;
-        }
+        
     }
 }

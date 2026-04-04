@@ -22,6 +22,7 @@ namespace WindowsFormsApp1
             ProjectsControl projects = new ProjectsControl();
             projects.Dock = DockStyle.Fill;
             panel2.Controls.Add(projects);
+            projects.LoadProjects();
         }
 
         private void button4_Click(object sender, EventArgs e)
