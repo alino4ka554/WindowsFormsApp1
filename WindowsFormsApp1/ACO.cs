@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
         public ScheduleSolution BestSolution;
         private Random _rnd = new Random();
         private Dictionary<int, List<int>> _resourcesOperations = new Dictionary<int, List<int>>();
-        private Dictionary<int, List<int>> _projectsOperations = new Dictionary<int, List<int>>();
+        public Dictionary<int, List<int>> _projectsOperations = new Dictionary<int, List<int>>();
         private Dictionary<int, Dictionary<int, List<int>>> _opsWithOneResInOneProj = new Dictionary<int, Dictionary<int, List<int>>>();
         private ScheduleSolution oldBest;
         public double GetRandomChoice() => _rnd.NextDouble();

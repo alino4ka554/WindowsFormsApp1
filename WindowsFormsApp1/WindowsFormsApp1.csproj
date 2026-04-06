@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=26.3.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Cells.26.3.0\lib\net40\Aspose.Cells.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GanttChartControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GanttChartControl.Designer.cs">
+      <DependentUpon>GanttChartControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Operation.cs" />
     <Compile Include="OperationAdd.cs">
@@ -77,14 +86,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="ScheduleSolution.cs" />
-    <Compile Include="UserControl1.cs">
+    <Compile Include="ProjectsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="ProjectsControl.Designer.cs">
+      <DependentUpon>ProjectsControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GanttChartControl.resx">
+      <DependentUpon>GanttChartControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperationAdd.resx">
       <DependentUpon>OperationAdd.cs</DependentUpon>
@@ -105,9 +117,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectsControl.resx">
+      <DependentUpon>ProjectsControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

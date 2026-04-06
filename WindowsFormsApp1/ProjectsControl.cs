@@ -21,14 +21,9 @@ namespace WindowsFormsApp1
         public void LoadProjects()
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-
-            // обычные колонки
-            dataGridView1.Columns.Add("Name", "Проект");
-            dataGridView1.Columns.Add("Tasks", "Кол-во задач");
 
             // колонка с кнопкой
-            DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
+            /*DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
             btnColumn.Name = "Edit";
             btnColumn.HeaderText = "";
             btnColumn.Text = "Редактировать";
@@ -39,25 +34,20 @@ namespace WindowsFormsApp1
             btnColumn.DefaultCellStyle.SelectionForeColor = Color.White;
             
 
-            dataGridView1.Columns.Add(btnColumn);
-            // заполняем строки
+            dataGridView1.Columns.Add(btnColumn);*/
             for (int i = 0; i < 5; i++)
             {
-                dataGridView1.Rows.Add($"Проект {i + 1}", 10);
+                dataGridView1.Rows.Add(i +1, $"Проект {i + 1}", 10);
             }
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // защита от клика по заголовку
             if (e.RowIndex < 0) return;
 
-            // проверяем, что нажали именно на колонку с кнопкой
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
-                // получаем данные проекта (например имя)
                 string projectName = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
 
-                // открываем страницу проекта
                 OpenProjectPage(projectName);
             }
         }
