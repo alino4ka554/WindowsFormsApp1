@@ -76,6 +76,8 @@ namespace WindowsFormsApp1
                 if (ctrl is Button btn)
                 {
                     btn.BackColor = Color.LightGray;
+                    btn.Cursor = Cursors.Hand;
+                    btn.FlatAppearance.MouseOverBackColor = Color.Silver;
                 }
             }
         }
@@ -83,11 +85,14 @@ namespace WindowsFormsApp1
         {
             ResetMenuButtons();
             btn.BackColor = Color.Silver;
+            btn.Cursor = Cursors.Default;
+            btn.FlatAppearance.MouseOverBackColor = btn.BackColor;
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
             ClearMainPanel();
             ShowSideMenu();
+            Header.Text = "Проекты";
             ProjectsControl projects = new ProjectsControl();
             projects.Dock = DockStyle.Fill;
             panel2.Controls.Add(projects);
@@ -98,6 +103,12 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             SetActiveButton(button2);
+            ClearMainPanel();
+            ExecutorsControl executors = new ExecutorsControl();
+            executors.Dock = DockStyle.Fill;
+            panel2.Controls.Add(executors);
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)

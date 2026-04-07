@@ -34,14 +34,14 @@ namespace WindowsFormsApp1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAddProject = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonDeleteProject = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDeleteProject = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
             this.buttonAddProject.TabIndex = 2;
             this.buttonAddProject.Text = "Добавить";
             this.buttonAddProject.UseVisualStyleBackColor = false;
+            this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
             // 
             // dataGridView1
             // 
@@ -102,6 +103,37 @@ namespace WindowsFormsApp1
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(736, 332);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Проект";
+            this.Name.MinimumWidth = 6;
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Operations
+            // 
+            this.Operations.HeaderText = "Операции";
+            this.Operations.MinimumWidth = 6;
+            this.Operations.Name = "Operations";
+            this.Operations.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "";
+            this.Edit.MinimumWidth = 6;
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Редактировать";
+            this.Edit.UseColumnTextForButtonValue = true;
             // 
             // panel1
             // 
@@ -146,37 +178,6 @@ namespace WindowsFormsApp1
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(46, 332);
             this.panel3.TabIndex = 5;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Проект";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Operations
-            // 
-            this.Operations.HeaderText = "Операции";
-            this.Operations.MinimumWidth = 6;
-            this.Operations.Name = "Operations";
-            this.Operations.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "";
-            this.Edit.MinimumWidth = 6;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Редактировать";
-            this.Edit.UseColumnTextForButtonValue = true;
             // 
             // ProjectsControl
             // 

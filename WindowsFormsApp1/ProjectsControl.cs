@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class ProjectsControl : UserControl
     {
+        public Dictionary<int, Project> Projects { get; set; } = new Dictionary<int, Project>();
         public ProjectsControl()
         {
             InitializeComponent();
@@ -62,6 +63,13 @@ namespace WindowsFormsApp1
             form.Header.Text = projectName;
             form.MainPanel.Controls.Add(projectPage);
             projectPage.Dock = DockStyle.Fill;
+        }
+
+        private void buttonAddProject_Click(object sender, EventArgs e)
+        {
+            ProjectAdd projectAdd = new ProjectAdd();
+            projectAdd.ShowDialog();
+            
         }
     }
 }

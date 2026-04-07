@@ -163,9 +163,9 @@ namespace WindowsFormsApp1
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(280, 114);
+            this.panel2.Location = new System.Drawing.Point(280, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(798, 405);
+            this.panel2.Size = new System.Drawing.Size(798, 411);
             this.panel2.TabIndex = 1;
             // 
             // panel5
@@ -227,7 +227,7 @@ namespace WindowsFormsApp1
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(280, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(798, 114);
+            this.panel3.Size = new System.Drawing.Size(798, 108);
             this.panel3.TabIndex = 0;
             // 
             // panel4
@@ -236,7 +236,7 @@ namespace WindowsFormsApp1
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(66, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 114);
+            this.panel4.Size = new System.Drawing.Size(200, 108);
             this.panel4.TabIndex = 1;
             // 
             // labelHeader
@@ -245,7 +245,7 @@ namespace WindowsFormsApp1
             this.labelHeader.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelHeader.Location = new System.Drawing.Point(0, 0);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(200, 114);
+            this.labelHeader.Size = new System.Drawing.Size(200, 108);
             this.labelHeader.TabIndex = 1;
             this.labelHeader.Text = "Проекты";
             this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,7 +260,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(66, 114);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(66, 108);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // buttonBack
@@ -271,7 +271,7 @@ namespace WindowsFormsApp1
             this.buttonBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.buttonBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBack.Image = global::WindowsFormsApp1.Properties.Resources.free_icon_back_left_arrow_circular_button_outline_54623;
-            this.buttonBack.Location = new System.Drawing.Point(3, 32);
+            this.buttonBack.Location = new System.Drawing.Point(3, 29);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(60, 49);
             this.buttonBack.TabIndex = 2;
@@ -289,7 +289,7 @@ namespace WindowsFormsApp1
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(606, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(192, 114);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(192, 108);
             this.flowLayoutPanel2.TabIndex = 0;
             this.flowLayoutPanel2.WrapContents = false;
             // 

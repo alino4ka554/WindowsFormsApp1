@@ -50,6 +50,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACO.cs" />
+    <Compile Include="ExecutorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExecutorAdd.Designer.cs">
+      <DependentUpon>ExecutorAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExecutorsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExecutorsControl.Designer.cs">
+      <DependentUpon>ExecutorsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +83,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="ProjectAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectAdd.Designer.cs">
+      <DependentUpon>ProjectAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +110,12 @@
     <Compile Include="ProjectsControl.Designer.cs">
       <DependentUpon>ProjectsControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExecutorAdd.resx">
+      <DependentUpon>ExecutorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExecutorsControl.resx">
+      <DependentUpon>ExecutorsControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OperationAdd.resx">
       <DependentUpon>OperationAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectAdd.resx">
+      <DependentUpon>ProjectAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectControl.resx">
       <DependentUpon>ProjectControl.cs</DependentUpon>
