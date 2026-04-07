@@ -50,7 +50,7 @@ namespace WindowsFormsApp1
             {
                 if (!Resources.ContainsKey(op.Resource))
                 {
-                    Resources.Add(op.Resource, new Resource(op.Resource));
+                    Resources.Add(op.Resource, new Resource(op.Resource, ""));
                     ResourceSequences.Add(op.Resource, new List<int>());
                 }
             }

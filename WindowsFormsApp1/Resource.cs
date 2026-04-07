@@ -12,9 +12,10 @@ namespace WindowsFormsApp1
         public string Name { get; set; }
         public List<Operation> Operations { get; set; } = new List<Operation>();
         public double ReleaseTime => (from operation in Operations select operation.EndTime).Max();
-        public Resource(int id)
+        public Resource(int id, string name)
         {
             Id = id;
+            Name = name;
         }
     }
 }

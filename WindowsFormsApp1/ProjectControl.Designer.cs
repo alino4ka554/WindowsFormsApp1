@@ -192,7 +192,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ProjectControl";
+            //this.Name = "ProjectControl";
             this.Size = new System.Drawing.Size(828, 405);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

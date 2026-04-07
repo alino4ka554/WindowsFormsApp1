@@ -16,5 +16,10 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            DataStorage.Executors.Add(new Resource(DataStorage.Executors.Count + 1, textBoxName.Text));
+        }
     }
 }

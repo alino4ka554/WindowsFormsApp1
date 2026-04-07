@@ -12,7 +12,6 @@ namespace WindowsFormsApp1
 {
     public partial class ProjectAdd : Form
     {
-        public Project NewProject = new Project(-1, new List<Operation>());
         public ProjectAdd()
         {
             InitializeComponent();
@@ -20,7 +19,8 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            NewProject.Name = textBoxName.Text;
+            DataStorage.Projects.Add(new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text));
+            this.Close();
         }
     }
 }

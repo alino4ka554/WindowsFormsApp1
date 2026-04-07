@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ACO.cs" />
+    <Compile Include="DataStorage.cs" />
     <Compile Include="ExecutorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
