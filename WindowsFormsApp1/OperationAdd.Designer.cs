@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.comboBoxExecutors = new System.Windows.Forms.ComboBox();
             this.labelTime = new System.Windows.Forms.Label();
-            this.textBoxExecutor = new System.Windows.Forms.TextBox();
             this.labelExecutor = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -44,7 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelPredecessors = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxPredecessors = new System.Windows.Forms.ComboBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -61,8 +61,8 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxExecutors, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelTime, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxExecutor, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelExecutor, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxName, 0, 1);
@@ -70,7 +70,7 @@
             this.tableLayoutPanel1.Controls.Add(this.labelCost, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.labelPredecessors, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.comboBoxPredecessors, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.buttonSave, 0, 11);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(46, 44);
@@ -92,26 +92,27 @@
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
+            // comboBoxExecutors
+            // 
+            this.comboBoxExecutors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxExecutors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxExecutors.FormattingEnabled = true;
+            this.comboBoxExecutors.Location = new System.Drawing.Point(3, 89);
+            this.comboBoxExecutors.Name = "comboBoxExecutors";
+            this.comboBoxExecutors.Size = new System.Drawing.Size(376, 24);
+            this.comboBoxExecutors.TabIndex = 11;
+            // 
             // labelTime
             // 
             this.labelTime.AutoSize = true;
             this.labelTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTime.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelTime.Location = new System.Drawing.Point(3, 124);
+            this.labelTime.Location = new System.Drawing.Point(3, 116);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(376, 24);
             this.labelTime.TabIndex = 4;
             this.labelTime.Text = "Продолжительность";
             this.labelTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBoxExecutor
-            // 
-            this.textBoxExecutor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxExecutor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxExecutor.Location = new System.Drawing.Point(3, 89);
-            this.textBoxExecutor.Name = "textBoxExecutor";
-            this.textBoxExecutor.Size = new System.Drawing.Size(376, 32);
-            this.textBoxExecutor.TabIndex = 3;
             // 
             // labelExecutor
             // 
@@ -152,7 +153,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.panel5, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 151);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 143);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -194,7 +195,7 @@
             // 
             this.labelCost.AutoSize = true;
             this.labelCost.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCost.Location = new System.Drawing.Point(3, 184);
+            this.labelCost.Location = new System.Drawing.Point(3, 176);
             this.labelCost.Name = "labelCost";
             this.labelCost.Size = new System.Drawing.Size(101, 24);
             this.labelCost.TabIndex = 6;
@@ -206,7 +207,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.panel6, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 211);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 203);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -248,21 +249,21 @@
             this.labelPredecessors.AutoSize = true;
             this.labelPredecessors.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelPredecessors.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPredecessors.Location = new System.Drawing.Point(3, 241);
+            this.labelPredecessors.Location = new System.Drawing.Point(3, 233);
             this.labelPredecessors.Name = "labelPredecessors";
             this.labelPredecessors.Size = new System.Drawing.Size(376, 24);
             this.labelPredecessors.TabIndex = 8;
             this.labelPredecessors.Text = "Опирается на";
             // 
-            // comboBox1
+            // comboBoxPredecessors
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 268);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(376, 24);
-            this.comboBox1.TabIndex = 9;
+            this.comboBoxPredecessors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxPredecessors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxPredecessors.FormattingEnabled = true;
+            this.comboBoxPredecessors.Location = new System.Drawing.Point(3, 260);
+            this.comboBoxPredecessors.Name = "comboBoxPredecessors";
+            this.comboBoxPredecessors.Size = new System.Drawing.Size(376, 24);
+            this.comboBoxPredecessors.TabIndex = 9;
             // 
             // buttonSave
             // 
@@ -271,7 +272,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(125, 298);
+            this.buttonSave.Location = new System.Drawing.Point(125, 292);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(131, 34);
             this.buttonSave.TabIndex = 10;
@@ -346,13 +347,12 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox textBoxExecutor;
         private System.Windows.Forms.Label labelExecutor;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelCost;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label labelPredecessors;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxPredecessors;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBoxName;
@@ -362,5 +362,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxExecutors;
     }
 }

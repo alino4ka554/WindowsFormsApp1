@@ -34,14 +34,14 @@ namespace WindowsFormsApp1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonAddProject = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDeleteProject = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -104,37 +104,6 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(736, 332);
             this.dataGridView1.TabIndex = 0;
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Проект";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Operations
-            // 
-            this.Operations.HeaderText = "Операции";
-            this.Operations.MinimumWidth = 6;
-            this.Operations.Name = "Operations";
-            this.Operations.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "";
-            this.Edit.MinimumWidth = 6;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Редактировать";
-            this.Edit.UseColumnTextForButtonValue = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -179,6 +148,37 @@ namespace WindowsFormsApp1
             this.panel3.Size = new System.Drawing.Size(46, 332);
             this.panel3.TabIndex = 5;
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Название";
+            this.Name.MinimumWidth = 6;
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Operations
+            // 
+            this.Operations.HeaderText = "Операции";
+            this.Operations.MinimumWidth = 6;
+            this.Operations.Name = "Operations";
+            this.Operations.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "";
+            this.Edit.MinimumWidth = 6;
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Редактировать";
+            this.Edit.UseColumnTextForButtonValue = true;
+            // 
             // ProjectsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -187,10 +187,12 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            //this.Name = "ProjectsControl";
             this.Size = new System.Drawing.Size(828, 405);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.Tag = "Проекты";
 
         }
 

@@ -23,30 +23,23 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClearMainPanel();
             SetActiveButton(button1);
             ProjectsControl projects = new ProjectsControl();
-            projects.Dock = DockStyle.Fill;
-            panel2.Controls.Add(projects);
-            projects.LoadProjects();
+            OpenPage(projects);
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {// добавляем колонки (дни)
-            string filePath = "operations.xlsx";
-            var ops = LoadOperationsFromExcel(filePath);
-            var operations = ops.ToDictionary(op => op.Id);
-            var colony = new ACO(ops, iterations: 1000, ants: 100,
-                                       beta: 2, alpha: 10, rho: 0.5,
-                                       tauMin: 0.01, tauMax: 1.0);
-            colony.Run();
-            ClearMainPanel();
+        {
             SetActiveButton(button4);
             GanttChartControl ganttChart = new GanttChartControl();
-            ganttChart.Dock = DockStyle.Fill;
-            panel2.Controls.Add(ganttChart);
-            ganttChart.LoadGanttChart(colony.BestSolution, colony._projectsOperations);
-           
+            OpenPage(ganttChart);
+        }
+        public void OpenPage(UserControl userControl)
+        {
+            ClearMainPanel();
+            userControl.Dock = DockStyle.Fill;
+            MainPanel.Controls.Add(userControl);
+            Header.Text = userControl.Tag.ToString();
         }
         public void HideSideMenu()
         {
@@ -90,25 +83,17 @@ namespace WindowsFormsApp1
         }
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            ClearMainPanel();
             ShowSideMenu();
-            Header.Text = "Проекты";
             ProjectsControl projects = new ProjectsControl();
-            projects.Dock = DockStyle.Fill;
-            panel2.Controls.Add(projects);
-            projects.LoadProjects();
+            OpenPage(projects);
             HideButtonBack();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SetActiveButton(button2);
-            ClearMainPanel();
             ExecutorsControl executors = new ExecutorsControl();
-            executors.Dock = DockStyle.Fill;
-            panel2.Controls.Add(executors);
-
-
+            OpenPage(executors);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -155,6 +140,16 @@ namespace WindowsFormsApp1
                 }
             }
             return operations;
+        }
+
+        private void buttonBuildSolution_Click(object sender, EventArgs e)
+        {
+            var operations = DataStorage.Operations;
+            var colony = new ACO(operations, iterations: 1000, ants: 100,
+                                       beta: 2, alpha: 10, rho: 0.5,
+                                       tauMin: 0.01, tauMax: 1.0);
+            colony.Run();
+            DataStorage.Solution = colony.BestSolution;
         }
     }
 }

@@ -19,13 +19,14 @@ namespace WindowsFormsApp1
             {
                 dataGridView1.ClearSelection();
             };
+            LoadGanttChart();
         }
-        public void LoadGanttChart(ScheduleSolution solution, Dictionary<int, List <int>> projectOperations)
+        public void LoadGanttChart()
         {
             dataGridView1.Columns.Add("Name", "");
             dataGridView1.Columns[0].Width = 150;
             DateTime startTime = DateTime.Now;
-            DateTime endTime = DateTime.Now.AddDays(solution.TotalTime);
+            DateTime endTime = DateTime.Now.AddDays(DataStorage.Solution.TotalTime);
             for(DateTime date = startTime; date <= endTime; date = date.AddDays(1))
             {
                 string day = date.Day < 10 ? $"0{date.Day}" : $"{date.Day}";
@@ -34,13 +35,14 @@ namespace WindowsFormsApp1
                 dataGridView1.Columns[$"{day}.{month}.{date.Year}"].Width = 37;
                 dataGridView1.Columns[$"{day}.{month}.{date.Year}"].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            foreach (var project in projectOperations)
+            foreach (var project in DataStorage.Projects)
             {
                 dataGridView1.Rows.Add("Project " + project.Key);
-                foreach (var opId in project.Value)
+                foreach (var op in project.Value.Operations)
                 {
-                    var operation = solution.Operations[opId];
-                    dataGridView1.Rows.Add(solution.Operations[opId].Name);
+                    var opId = op.Id;
+                    var operation = DataStorage.Solution.Operations[opId];
+                    dataGridView1.Rows.Add(DataStorage.Solution.Operations[opId].Name);
                     dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[(int)operation.StartTime + 1].Style.BackColor = Color.Red;
                     for (int i = (int)operation.StartTime + 1; i <= (int)operation.EndTime; i++)
                     {

@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            DataStorage.Executors.Add(new Resource(DataStorage.Executors.Count + 1, textBoxName.Text));
+            var executor = new Resource(DataStorage.Executors.Count + 1, textBoxName.Text);
+            DataStorage.Executors.Add(executor.Id, executor);
+            this.Close();
         }
     }
 }

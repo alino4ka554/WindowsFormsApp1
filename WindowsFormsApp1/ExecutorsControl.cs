@@ -15,12 +15,22 @@ namespace WindowsFormsApp1
         public ExecutorsControl()
         {
             InitializeComponent();
+            LoadExecutors();
         }
-
+        public void LoadExecutors()
+        {
+            dataGridView1.Rows.Clear();
+            foreach (var executor in DataStorage.Executors)
+            {
+                dataGridView1.Rows.Add(executor.Key, $"{executor.Value.Name}");
+            }
+            dataGridView1.ClearSelection();
+        }
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
             ExecutorAdd executorAdd = new ExecutorAdd();
             executorAdd.ShowDialog();
+            LoadExecutors();
         }
     }
 }

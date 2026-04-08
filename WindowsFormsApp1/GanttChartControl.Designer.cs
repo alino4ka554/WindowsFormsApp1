@@ -108,7 +108,7 @@
             this.Size = new System.Drawing.Size(828, 405);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-
+            this.Tag = "Диаграмма Гантта";
         }
 
         #endregion

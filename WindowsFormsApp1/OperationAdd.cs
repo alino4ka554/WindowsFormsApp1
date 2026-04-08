@@ -12,21 +12,46 @@ namespace WindowsFormsApp1
 {
     public partial class OperationAdd : Form
     {
+        public int ProjectId;
         RangeTrackBar sliderTime = new RangeTrackBar();
         RangeTrackBar sliderCost = new RangeTrackBar();
-        public OperationAdd()
+        public OperationAdd(int _projectId)
         {
             InitializeComponent();
-            label1.Text = sliderTime.LowerValue.ToString();
+            /*label1.Text = sliderTime.LowerValue.ToString();
             label2.Text = sliderTime.UpperValue.ToString();
             label3.Text = sliderCost.LowerValue.ToString();
             label4.Text = sliderCost.UpperValue.ToString();
             sliderTime.Dock = DockStyle.Fill;
             sliderCost.Dock = DockStyle.Fill;
             panel5.Controls.Add(sliderTime);
-            panel6.Controls.Add(sliderCost);
+            panel6.Controls.Add(sliderCost);*/
+            ProjectId = _projectId;
+            InitializeRangeTrackBar(sliderTime, label1, label2, panel5);
+            InitializeRangeTrackBar(sliderCost, label3, label4, panel6);
             sliderTime.ValuesChanged += RangeTrackBar1_ValuesChanged;
             sliderCost.ValuesChanged += RangeTrackBar2_ValuesChanged;
+            GetExecutors();
+            GetPredecessors();
+        }
+        public void InitializeRangeTrackBar(RangeTrackBar slider, Label labelFrom, Label labelTo, Panel panel)
+        {
+            labelFrom.Text = slider.LowerValue.ToString();
+            labelTo.Text = slider.UpperValue.ToString();
+            slider.Dock = DockStyle.Fill;
+            panel.Controls.Add(slider);
+        }
+        public void GetExecutors()
+        {
+            comboBoxExecutors.DataSource = DataStorage.Executors.Values.ToList();
+            comboBoxExecutors.DisplayMember = "Name";
+            comboBoxExecutors.ValueMember = "Id";
+        }
+        public void GetPredecessors()
+        {
+            comboBoxPredecessors.DataSource = DataStorage.Projects[ProjectId].Operations;
+            comboBoxPredecessors.DisplayMember = "Name";
+            comboBoxPredecessors.ValueMember = "Id"; 
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -47,12 +72,18 @@ namespace WindowsFormsApp1
         {
             Operation operation = new Operation
             {
+                Id = DataStorage.Operations.Count + 1,
                 Name = textBoxName.Text,
                 NormalTime = sliderTime.LowerValue,
                 CrashTime = sliderTime.UpperValue,
                 NormalCost = sliderCost.LowerValue,
-                CrashCost = sliderCost.UpperValue
+                CrashCost = sliderCost.UpperValue,
+                Project = ProjectId,
+                Resource = (int)comboBoxExecutors.SelectedValue,
             };
+            DataStorage.Projects[ProjectId].Operations.Add(operation);
+            DataStorage.Operations.Add(operation.Id, operation);
+            this.Close();
         }
     }
     public class RangeTrackBar : Control

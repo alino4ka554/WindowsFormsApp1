@@ -12,19 +12,29 @@ namespace WindowsFormsApp1
 {
     public partial class ProjectControl : UserControl
     {
-        public ProjectControl()
+        int ProjectId;
+        public ProjectControl(int projectId)
         {
             InitializeComponent();
-            for (int i = 0; i < 5; i++)
-            {
-                dataGridView1.Rows.Add($"Проект {i + 1}", 10);
-            }
+            ProjectId = projectId;
+            LoadOperations();
         }
-
+        public void LoadOperations()
+        {
+            dataGridView1.Rows.Clear();
+            var ops = DataStorage.Projects[ProjectId].Operations;
+            foreach (var op in ops)
+            {
+                var executorName = DataStorage.Executors[op.Resource].Name;
+                dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{executorName}", $"{op.NormalTime} - {op.CrashTime}", $"{op.NormalCost} - {op.CrashCost}");
+            }
+            dataGridView1.ClearSelection();
+        }
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
-            OperationAdd operationAdd = new OperationAdd();
+            OperationAdd operationAdd = new OperationAdd(ProjectId);
             operationAdd.ShowDialog();
+            LoadOperations();
         }
     }
 }

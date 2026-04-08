@@ -32,12 +32,12 @@ namespace WindowsFormsApp1
         private ScheduleSolution oldBest;
         public double GetRandomChoice() => _rnd.NextDouble();
 
-        public ACO(List<Operation> operations, int iterations, int ants,
+        public ACO(Dictionary<int,Operation> operations, int iterations, int ants,
                          double beta, double alpha, double rho,
                          double tauMin, double tauMax)
         {
-            _operations = operations.ToDictionary(op => op.Id);
-            ops = operations.ToDictionary(op => op.Id);
+            _operations = operations;
+            ops = operations;
             _iterations = iterations;
             //_ants = ants;
             _beta = beta;

@@ -12,34 +12,20 @@ namespace WindowsFormsApp1
 {
     public partial class ProjectsControl : UserControl
     {
-        public Dictionary<int, Project> Projects { get; set; } = new Dictionary<int, Project>();
         public ProjectsControl()
         {
             InitializeComponent();
+            LoadProjects();
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            //this.Resize += panelMain_Resize;
         }
         public void LoadProjects()
         {
             dataGridView1.Rows.Clear();
-
-            // колонка с кнопкой
-            /*DataGridViewButtonColumn btnColumn = new DataGridViewButtonColumn();
-            btnColumn.Name = "Edit";
-            btnColumn.HeaderText = "";
-            btnColumn.Text = "Редактировать";
-            btnColumn.UseColumnTextForButtonValue = true;
-            btnColumn.DefaultCellStyle.BackColor = Color.White;
-            btnColumn.DefaultCellStyle.ForeColor = Color.White;
-            btnColumn.DefaultCellStyle.SelectionBackColor = Color.Gray;
-            btnColumn.DefaultCellStyle.SelectionForeColor = Color.White;
-            
-
-            dataGridView1.Columns.Add(btnColumn);*/
-            for (int i = 0; i < 5; i++)
+            foreach (var project in DataStorage.Projects)
             {
-                dataGridView1.Rows.Add(i +1, $"Проект {i + 1}", 10);
+                dataGridView1.Rows.Add(project.Key, project.Value.Name, $"{project.Value.Operations.Count} операций");
             }
+            dataGridView1.ClearSelection();
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -47,29 +33,26 @@ namespace WindowsFormsApp1
 
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
-                string projectName = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                int projectId = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
 
-                OpenProjectPage(projectName);
+                OpenProjectPage(projectId);
             }
         }
-        private void OpenProjectPage(string projectName)
+        private void OpenProjectPage(int projectId)
         {
-            var projectPage = new ProjectControl();
-
+            var projectPage = new ProjectControl(projectId);
+            projectPage.Tag = DataStorage.Projects[projectId].Name;
             Form1 form = Application.OpenForms["Form1"] as Form1;
             form?.HideSideMenu();
-            form?.ClearMainPanel();
             form?.ShowButtonBack();
-            form.Header.Text = projectName;
-            form.MainPanel.Controls.Add(projectPage);
-            projectPage.Dock = DockStyle.Fill;
+            form.OpenPage(projectPage);
         }
 
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
             ProjectAdd projectAdd = new ProjectAdd();
             projectAdd.ShowDialog();
-            
+            LoadProjects();
         }
     }
 }

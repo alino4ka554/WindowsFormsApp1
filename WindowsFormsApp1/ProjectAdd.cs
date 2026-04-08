@@ -19,7 +19,8 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            DataStorage.Projects.Add(new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text));
+            var project = new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text);
+            DataStorage.Projects.Add(project.Id, project);
             this.Close();
         }
     }

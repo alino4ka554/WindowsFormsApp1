@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class ExecutorsControl
+    partial class ScheduleControl
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -31,13 +31,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonDeleteProject = new System.Windows.Forms.Button();
-            this.buttonAddProject = new System.Windows.Forms.Button();
+            this.buttonSpeedUp = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Executor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -45,44 +49,27 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonDeleteProject);
-            this.panel1.Controls.Add(this.buttonAddProject);
+            this.panel1.Controls.Add(this.buttonSpeedUp);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 332);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(828, 73);
-            this.panel1.TabIndex = 9;
+            this.panel1.TabIndex = 4;
             // 
-            // buttonDeleteProject
+            // buttonSpeedUp
             // 
-            this.buttonDeleteProject.BackColor = System.Drawing.Color.Black;
-            this.buttonDeleteProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonDeleteProject.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteProject.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDeleteProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteProject.Location = new System.Drawing.Point(258, 20);
-            this.buttonDeleteProject.Name = "buttonDeleteProject";
-            this.buttonDeleteProject.Size = new System.Drawing.Size(167, 45);
-            this.buttonDeleteProject.TabIndex = 3;
-            this.buttonDeleteProject.Text = "Удалить";
-            this.buttonDeleteProject.UseVisualStyleBackColor = false;
-            // 
-            // buttonAddProject
-            // 
-            this.buttonAddProject.BackColor = System.Drawing.Color.Black;
-            this.buttonAddProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddProject.FlatAppearance.BorderSize = 0;
-            this.buttonAddProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddProject.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddProject.Location = new System.Drawing.Point(46, 20);
-            this.buttonAddProject.Name = "buttonAddProject";
-            this.buttonAddProject.Size = new System.Drawing.Size(167, 45);
-            this.buttonAddProject.TabIndex = 2;
-            this.buttonAddProject.Text = "Добавить";
-            this.buttonAddProject.UseVisualStyleBackColor = false;
-            this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
+            this.buttonSpeedUp.BackColor = System.Drawing.Color.Black;
+            this.buttonSpeedUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSpeedUp.FlatAppearance.BorderSize = 0;
+            this.buttonSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSpeedUp.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSpeedUp.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonSpeedUp.Location = new System.Drawing.Point(46, 20);
+            this.buttonSpeedUp.Name = "buttonSpeedUp";
+            this.buttonSpeedUp.Size = new System.Drawing.Size(167, 45);
+            this.buttonSpeedUp.TabIndex = 2;
+            this.buttonSpeedUp.Text = "Ускорить";
+            this.buttonSpeedUp.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -91,7 +78,7 @@
             this.panel3.Location = new System.Drawing.Point(782, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(46, 332);
-            this.panel3.TabIndex = 11;
+            this.panel3.TabIndex = 6;
             // 
             // panel2
             // 
@@ -100,7 +87,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(46, 332);
-            this.panel2.TabIndex = 12;
+            this.panel2.TabIndex = 7;
             // 
             // dataGridView1
             // 
@@ -122,7 +109,12 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Name});
+            this.Operation,
+            this.StartTime,
+            this.EndTime,
+            this.Project,
+            this.Executor,
+            this.Edit});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -137,10 +129,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(736, 332);
-            this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.TabIndex = 8;
             // 
             // Id
             // 
@@ -150,38 +142,81 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
-            // Name
+            // Operation
             // 
-            this.Name.HeaderText = "ФИО";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this.Operation.HeaderText = "Задача";
+            this.Operation.MinimumWidth = 6;
+            this.Operation.Name = "Operation";
+            this.Operation.ReadOnly = true;
             // 
-            // ExecutorsControl
+            // StartTime
+            // 
+            this.StartTime.HeaderText = "Дата начала";
+            this.StartTime.MinimumWidth = 6;
+            this.StartTime.Name = "StartTime";
+            this.StartTime.ReadOnly = true;
+            // 
+            // EndTime
+            // 
+            this.EndTime.HeaderText = "Дата окончания";
+            this.EndTime.MinimumWidth = 6;
+            this.EndTime.Name = "EndTime";
+            this.EndTime.ReadOnly = true;
+            // 
+            // Project
+            // 
+            this.Project.HeaderText = "Проект";
+            this.Project.MinimumWidth = 6;
+            this.Project.Name = "Project";
+            this.Project.ReadOnly = true;
+            // 
+            // Executor
+            // 
+            this.Executor.HeaderText = "Исполнитель";
+            this.Executor.MinimumWidth = 6;
+            this.Executor.Name = "Executor";
+            this.Executor.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "";
+            this.Edit.MinimumWidth = 6;
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Редактировать";
+            this.Edit.UseColumnTextForButtonValue = true;
+            // 
+            // ScheduleControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.Name = "ScheduleControl";
             this.Size = new System.Drawing.Size(828, 405);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.Tag = "Исполнители";
+            this.Tag = "Расписание";
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonDeleteProject;
-        private System.Windows.Forms.Button buttonAddProject;
+        private System.Windows.Forms.Button buttonSpeedUp;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Operation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Project;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Executor;
+        private System.Windows.Forms.DataGridViewButtonColumn Edit;
     }
 }
