@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
             return new Operation
             {
                 Id = this.Id,
+                Name = this.Name,
                 Project = this.Project,
                 Resource = this.Resource,
                 NormalTime = this.NormalTime,

@@ -49,9 +49,11 @@ namespace WindowsFormsApp1
         }
         public void GetPredecessors()
         {
-            comboBoxPredecessors.DataSource = DataStorage.Projects[ProjectId].Operations;
-            comboBoxPredecessors.DisplayMember = "Name";
-            comboBoxPredecessors.ValueMember = "Id"; 
+            //var listOps = DataStorage.Projects[ProjectId].Operations;
+            //listOps.Add(new Operation { Id = 0, Name = "- нет предшественника -" });
+            checkedListBoxPrecessors.DataSource = DataStorage.Projects[ProjectId].Operations; ;
+            checkedListBoxPrecessors.DisplayMember = "Name";
+            checkedListBoxPrecessors.ValueMember = "Id"; 
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -70,6 +72,10 @@ namespace WindowsFormsApp1
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            var preds = checkedListBoxPrecessors.CheckedItems
+                .Cast<Operation>()
+                .Select(op => op.Id)
+                .ToList();
             Operation operation = new Operation
             {
                 Id = DataStorage.Operations.Count + 1,
@@ -80,6 +86,7 @@ namespace WindowsFormsApp1
                 CrashCost = sliderCost.UpperValue,
                 Project = ProjectId,
                 Resource = (int)comboBoxExecutors.SelectedValue,
+                DependsOn = preds
             };
             DataStorage.Projects[ProjectId].Operations.Add(operation);
             DataStorage.Operations.Add(operation.Id, operation);

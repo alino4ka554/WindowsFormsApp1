@@ -44,12 +44,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelPredecessors = new System.Windows.Forms.Label();
-            this.comboBoxPredecessors = new System.Windows.Forms.ComboBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkedListBoxPrecessors = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -70,8 +70,8 @@
             this.tableLayoutPanel1.Controls.Add(this.labelCost, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.labelPredecessors, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.comboBoxPredecessors, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.buttonSave, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.checkedListBoxPrecessors, 0, 10);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(46, 44);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -86,9 +86,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(382, 332);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(382, 419);
             this.tableLayoutPanel1.TabIndex = 2;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -255,16 +255,6 @@
             this.labelPredecessors.TabIndex = 8;
             this.labelPredecessors.Text = "Опирается на";
             // 
-            // comboBoxPredecessors
-            // 
-            this.comboBoxPredecessors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxPredecessors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxPredecessors.FormattingEnabled = true;
-            this.comboBoxPredecessors.Location = new System.Drawing.Point(3, 260);
-            this.comboBoxPredecessors.Name = "comboBoxPredecessors";
-            this.comboBoxPredecessors.Size = new System.Drawing.Size(376, 24);
-            this.comboBoxPredecessors.TabIndex = 9;
-            // 
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -272,7 +262,7 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(125, 292);
+            this.buttonSave.Location = new System.Drawing.Point(125, 382);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(131, 34);
             this.buttonSave.TabIndex = 10;
@@ -286,7 +276,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(46, 420);
+            this.panel2.Size = new System.Drawing.Size(46, 507);
             this.panel2.TabIndex = 10;
             // 
             // panel3
@@ -295,13 +285,13 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(428, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(46, 420);
+            this.panel3.Size = new System.Drawing.Size(46, 507);
             this.panel3.TabIndex = 11;
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(46, 376);
+            this.panel1.Location = new System.Drawing.Point(46, 463);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(382, 44);
             this.panel1.TabIndex = 12;
@@ -314,12 +304,21 @@
             this.panel4.Size = new System.Drawing.Size(382, 44);
             this.panel4.TabIndex = 13;
             // 
+            // checkedListBoxPrecessors
+            // 
+            this.checkedListBoxPrecessors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxPrecessors.FormattingEnabled = true;
+            this.checkedListBoxPrecessors.Location = new System.Drawing.Point(3, 260);
+            this.checkedListBoxPrecessors.Name = "checkedListBoxPrecessors";
+            this.checkedListBoxPrecessors.Size = new System.Drawing.Size(376, 116);
+            this.checkedListBoxPrecessors.TabIndex = 12;
+            // 
             // OperationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(474, 420);
+            this.ClientSize = new System.Drawing.Size(474, 507);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
@@ -352,7 +351,6 @@
         private System.Windows.Forms.Label labelCost;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label labelPredecessors;
-        private System.Windows.Forms.ComboBox comboBoxPredecessors;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBoxName;
@@ -363,5 +361,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxExecutors;
+        private System.Windows.Forms.CheckedListBox checkedListBoxPrecessors;
     }
 }
