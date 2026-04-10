@@ -108,7 +108,7 @@ namespace WindowsFormsApp1
             var operations = new List<Operation>();
             Workbook wb = new Workbook(path);
             WorksheetCollection collection = wb.Worksheets;
-            for (int worksheetIndex = 0; worksheetIndex < 1; worksheetIndex++)
+            for (int worksheetIndex = 7; worksheetIndex < 8; worksheetIndex++)
             {
                 Worksheet worksheet = collection[worksheetIndex];
                 int rows = worksheet.Cells.MaxDataRow;
@@ -173,13 +173,22 @@ namespace WindowsFormsApp1
             return operations;
         }
 
-        private void buttonBuildSolution_Click(object sender, EventArgs e)
+        private async void buttonBuildSolution_Click(object sender, EventArgs e)
         {
             var operations = DataStorage.Operations;
             var colony = new ACO(operations, iterations: 1000, ants: 100,
                                        beta: 2, alpha: 10, rho: 0.5,
                                        tauMin: 0.01, tauMax: 1.0);
-            colony.Run();
+            //colony.Run();
+            
+            progressBar1.Visible = true;
+
+            await Task.Run(() =>
+            {
+                colony.Run(); // твой расчёт
+            });
+
+            progressBar1.Visible = false;
             DataStorage.Solution = colony.BestSolution;
         }
 

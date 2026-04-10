@@ -69,10 +69,9 @@
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(46, 232);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(46, 263);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(736, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(736, 69);
             this.flowLayoutPanel1.TabIndex = 15;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -105,7 +104,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 232);
+            this.dataGridView1.Size = new System.Drawing.Size(736, 263);
             this.dataGridView1.TabIndex = 16;
             // 
             // GanttChartControl
