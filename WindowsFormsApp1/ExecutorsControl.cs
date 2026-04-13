@@ -15,10 +15,21 @@ namespace WindowsFormsApp1
         public ExecutorsControl()
         {
             InitializeComponent();
-            LoadExecutors();
+            if(DataStorage.Executors.Count > 0)
+                LoadExecutors();
+            else
+            {
+                dataGridView1.Visible = false;
+                Label label = new Label();
+                label.Text = "Пока нет исполнителей";
+                label.Font = new Font("Calibri", 14, FontStyle.Bold);
+                panel4.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+            }
         }
         public void LoadExecutors()
         {
+            dataGridView1.Visible = true;
             dataGridView1.Rows.Clear();
             foreach (var executor in DataStorage.Executors)
             {

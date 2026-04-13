@@ -46,7 +46,14 @@ namespace WindowsFormsApp1
         {
             panel1.Visible = false;
         }
-
+        public void HideBuildSolution()
+        {
+            buttonBuildSolution.Visible = false;
+        }
+        public void ShowBuildSolution()
+        {
+            buttonBuildSolution.Visible = true;
+        }
         public void HideButtonBack()
         {
             buttonBack.Visible = false;
@@ -86,8 +93,9 @@ namespace WindowsFormsApp1
         {
             ShowSideMenu();
             ProjectsControl projects = new ProjectsControl();
-            OpenPage(projects);
             HideButtonBack();
+            OpenPage(projects);
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -175,21 +183,8 @@ namespace WindowsFormsApp1
 
         private async void buttonBuildSolution_Click(object sender, EventArgs e)
         {
-            var operations = DataStorage.Operations;
-            var colony = new ACO(operations, iterations: 1000, ants: 100,
-                                       beta: 2, alpha: 10, rho: 0.5,
-                                       tauMin: 0.01, tauMax: 1.0);
-            //colony.Run();
-            
-            progressBar1.Visible = true;
-
-            await Task.Run(() =>
-            {
-                colony.Run(); // твой расчёт
-            });
-
-            progressBar1.Visible = false;
-            DataStorage.Solution = colony.BestSolution;
+            BuildScheduleForm form = new BuildScheduleForm();
+            form.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)

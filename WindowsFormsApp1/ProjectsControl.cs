@@ -15,17 +15,30 @@ namespace WindowsFormsApp1
         public ProjectsControl()
         {
             InitializeComponent();
-            LoadProjects();
+            if (DataStorage.Projects.Count > 0)
+                LoadProjects();
+            else
+            {
+                dataGridView1.Visible = false;
+                Label label = new Label();
+                label.Text = "Пока нет проектов";
+                label.Font = new Font("Calibri", 14, FontStyle.Bold);
+                panel4.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+            }
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+
         }
         public void LoadProjects()
         {
+            dataGridView1.Visible = true;
             dataGridView1.Rows.Clear();
             foreach (var project in DataStorage.Projects)
             {
                 dataGridView1.Rows.Add(project.Key, project.Value.Name, $"{project.Value.Operations.Count} операций");
             }
             dataGridView1.ClearSelection();
+
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

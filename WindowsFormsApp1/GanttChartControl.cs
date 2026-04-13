@@ -20,7 +20,17 @@ namespace WindowsFormsApp1
                 dataGridView1.ClearSelection();
             };
             //dataGridView1.CellPainting += dataGridView1_CellPainting;
-            LoadGanttChart();
+            if(DataStorage.Solution != null)
+                LoadGanttChart();
+            else
+            {
+                dataGridView1.Visible = false;
+                Label label = new Label();
+                label.Text = "Невозможно построить диаграмму Гантта. Нет актуального расписания";
+                label.Font = new Font("Calibri", 14, FontStyle.Bold);
+                panel4.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+            }
         }
         public void LoadGanttChart()
         {

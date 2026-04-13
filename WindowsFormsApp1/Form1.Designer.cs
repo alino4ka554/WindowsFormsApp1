@@ -32,6 +32,7 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,14 +45,13 @@ namespace WindowsFormsApp1
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelHeader = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonBack = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.linkExit = new System.Windows.Forms.LinkLabel();
             this.labelName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -77,6 +77,15 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(280, 613);
             this.panel1.TabIndex = 0;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(118, 543);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 5;
+            this.progressBar1.Visible = false;
+            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightGray;
@@ -86,13 +95,12 @@ namespace WindowsFormsApp1
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.free_icon_business_reporting_12238483__2_;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.Location = new System.Drawing.Point(0, 400);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(280, 100);
             this.button5.TabIndex = 4;
-            this.button5.Text = "Экспорт";
+            this.button5.Text = "Импорт";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = false;
@@ -262,19 +270,8 @@ namespace WindowsFormsApp1
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(66, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 108);
+            this.panel4.Size = new System.Drawing.Size(300, 108);
             this.panel4.TabIndex = 1;
-            // 
-            // labelHeader
-            // 
-            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelHeader.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelHeader.Location = new System.Drawing.Point(0, 0);
-            this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(200, 108);
-            this.labelHeader.TabIndex = 1;
-            this.labelHeader.Text = "Проекты";
-            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel2
             // 
@@ -354,14 +351,16 @@ namespace WindowsFormsApp1
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // progressBar1
+            // labelHeader
             // 
-            this.progressBar1.Location = new System.Drawing.Point(118, 543);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 5;
-            this.progressBar1.Visible = false;
+            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelHeader.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(300, 108);
+            this.labelHeader.TabIndex = 2;
+            this.labelHeader.Text = "Проекты";
+            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
@@ -401,7 +400,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private Label labelName;
         private LinkLabel linkExit;
-        private Label labelHeader;
         private Panel panel4;
         private Panel panel5;
         private Button buttonBuildSolution;
@@ -411,6 +409,7 @@ namespace WindowsFormsApp1
         private TableLayoutPanel tableLayoutPanel2;
         private Button button5;
         private ProgressBar progressBar1;
+        private Label labelHeader;
     }
 }
 

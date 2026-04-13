@@ -15,10 +15,21 @@ namespace WindowsFormsApp1
         public ScheduleControl()
         {
             InitializeComponent();
-            LoadSchedule();
+            if (DataStorage.Solution != null)
+                LoadSchedule();
+            else
+            {
+                dataGridView1.Visible = false;
+                Label label = new Label();
+                label.Text = "Нет актуального расписания";
+                label.Font = new Font("Calibri", 14, FontStyle.Bold);
+                panel4.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+            }
         }
         public void LoadSchedule()
         {
+            dataGridView1.Visible = true;
             dataGridView1.Rows.Clear();
             foreach (var ops in DataStorage.Solution.Operations)
             {
@@ -27,6 +38,7 @@ namespace WindowsFormsApp1
                 var executorName = DataStorage.Executors[op.Resource].Name;
                 dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{op.StartTime}", $"{op.EndTime}", $"{projectName}", $"{executorName}");
             }
+            
         }
     }
 }

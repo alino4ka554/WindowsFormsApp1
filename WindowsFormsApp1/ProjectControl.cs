@@ -17,10 +17,23 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ProjectId = projectId;
-            LoadOperations();
+            if (DataStorage.Projects[ProjectId].Operations.Count > 0)
+                LoadOperations();
+            
+            else
+            {
+                dataGridView1.Visible = false;
+                Label label = new Label();
+                label.Text = "Пока нет задач";
+                label.Font = new Font("Calibri", 14, FontStyle.Bold);
+                panel4.Controls.Add(label);
+                label.Dock = DockStyle.Fill;
+            }
+            
         }
         public void LoadOperations()
         {
+            dataGridView1.Visible = true;
             dataGridView1.Rows.Clear();
             var ops = DataStorage.Projects[ProjectId].Operations;
             foreach (var op in ops)
