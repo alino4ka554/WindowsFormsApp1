@@ -30,30 +30,22 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDeleteProject = new System.Windows.Forms.Button();
             this.buttonAddProject = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
+            this.NameExecutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonDeleteProject);
-            this.panel1.Controls.Add(this.buttonAddProject);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 332);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(828, 73);
-            this.panel1.TabIndex = 9;
             // 
             // buttonDeleteProject
             // 
@@ -63,7 +55,7 @@
             this.buttonDeleteProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteProject.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonDeleteProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonDeleteProject.Location = new System.Drawing.Point(258, 20);
+            this.buttonDeleteProject.Location = new System.Drawing.Point(3, 8);
             this.buttonDeleteProject.Name = "buttonDeleteProject";
             this.buttonDeleteProject.Size = new System.Drawing.Size(167, 45);
             this.buttonDeleteProject.TabIndex = 3;
@@ -78,7 +70,7 @@
             this.buttonAddProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddProject.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonAddProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddProject.Location = new System.Drawing.Point(46, 20);
+            this.buttonAddProject.Location = new System.Drawing.Point(176, 8);
             this.buttonAddProject.Name = "buttonAddProject";
             this.buttonAddProject.Size = new System.Drawing.Size(167, 45);
             this.buttonAddProject.TabIndex = 2;
@@ -86,33 +78,51 @@
             this.buttonAddProject.UseVisualStyleBackColor = false;
             this.buttonAddProject.Click += new System.EventHandler(this.buttonAddProject_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(782, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(46, 332);
-            this.panel3.TabIndex = 11;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(46, 332);
-            this.panel2.TabIndex = 12;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Controls.Add(this.flowLayoutPanel1);
+            this.panel4.Controls.Add(this.labelHeader);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(46, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(736, 332);
+            this.panel4.Size = new System.Drawing.Size(706, 63);
             this.panel4.TabIndex = 13;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.buttonDeleteProject);
+            this.flowLayoutPanel1.Controls.Add(this.buttonAddProject);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(360, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(346, 63);
+            this.flowLayoutPanel1.TabIndex = 7;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // labelHeader
+            // 
+            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelHeader.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.labelHeader.Size = new System.Drawing.Size(300, 63);
+            this.labelHeader.TabIndex = 4;
+            this.labelHeader.Text = "Исполнители";
+            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.dataGridView1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(46, 63);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(706, 342);
+            this.panel5.TabIndex = 14;
             // 
             // dataGridView1
             // 
@@ -134,7 +144,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Name});
+            this.NameExecutor});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -151,8 +161,26 @@
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 332);
+            this.dataGridView1.Size = new System.Drawing.Size(706, 342);
             this.dataGridView1.TabIndex = 14;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(46, 405);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(752, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(76, 405);
+            this.panel3.TabIndex = 11;
             // 
             // Id
             // 
@@ -162,41 +190,43 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
-            // Name
+            // NameExecutor
             // 
-            this.Name.HeaderText = "ФИО";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this.NameExecutor.HeaderText = "ФИО";
+            this.NameExecutor.MinimumWidth = 6;
+            this.NameExecutor.Name = "NameExecutor";
+            this.NameExecutor.ReadOnly = true;
             // 
             // ExecutorsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
-            //this.Name = "ExecutorsControl";
+            this.Name = "ExecutorsControl";
             this.Size = new System.Drawing.Size(828, 405);
             this.Tag = "Исполнители";
-            this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonDeleteProject;
         private System.Windows.Forms.Button buttonAddProject;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label labelHeader;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameExecutor;
     }
 }

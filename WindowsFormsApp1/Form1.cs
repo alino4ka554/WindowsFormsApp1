@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         public Panel MainPanel => panel2;
-        public Label Header => labelHeader;
+        private UserControl CurrentControl;
         public Form1()
         {
             InitializeComponent();
@@ -40,7 +40,11 @@ namespace WindowsFormsApp1
             ClearMainPanel();
             userControl.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(userControl);
-            Header.Text = userControl.Tag.ToString();
+            CurrentControl = userControl;
+            if (DataStorage.Operations.Count == 0)
+                HideBuildSolution();
+            else 
+                ShowBuildSolution();
         }
         public void HideSideMenu()
         {
@@ -54,14 +58,7 @@ namespace WindowsFormsApp1
         {
             buttonBuildSolution.Visible = true;
         }
-        public void HideButtonBack()
-        {
-            buttonBack.Visible = false;
-        }
-        public void ShowButtonBack()
-        {
-            buttonBack.Visible = true;
-        }
+        
         public void ShowSideMenu()
         {
             panel1.Visible = true;
@@ -93,7 +90,6 @@ namespace WindowsFormsApp1
         {
             ShowSideMenu();
             ProjectsControl projects = new ProjectsControl();
-            HideButtonBack();
             OpenPage(projects);
             
         }
@@ -125,7 +121,6 @@ namespace WindowsFormsApp1
                 Dictionary<string, Project> ProjectsByName = new Dictionary<string, Project>();
                 for (int i = 1; i <= rows; i++)
                 {
-                    
                     var preds = new List<int>();
                     var cellValue = worksheet.Cells[i, 1].Value?.ToString().Trim();
                     if (!string.IsNullOrEmpty(cellValue) && cellValue != "-")
@@ -198,9 +193,21 @@ namespace WindowsFormsApp1
                 {
                     string filePath = openFileDialog.FileName;
                     LoadOperationsFromExcel(filePath);
-                    // дальше работаешь с этим файлом
                     MessageBox.Show($"Выбран файл: {filePath}");
-
+                    switch(CurrentControl)
+                    {
+                        case ProjectsControl _:
+                            OpenPage(new ProjectsControl());
+                            break;
+                        case ExecutorsControl _:
+                            OpenPage(new ExecutorsControl());
+                            break;
+                        case ScheduleControl _:
+                            OpenPage(new ScheduleControl());
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

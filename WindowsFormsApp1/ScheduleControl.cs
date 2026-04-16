@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
                 Label label = new Label();
                 label.Text = "Нет актуального расписания";
                 label.Font = new Font("Calibri", 14, FontStyle.Bold);
-                panel4.Controls.Add(label);
+                panel5.Controls.Add(label);
                 label.Dock = DockStyle.Fill;
             }
         }

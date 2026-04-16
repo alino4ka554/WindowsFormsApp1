@@ -8,8 +8,8 @@ namespace WindowsFormsApp1
 {
     public class ACO
     {
-        private int _iterations;
-        private Dictionary<int, int> _ants = new Dictionary<int, int>();
+        public int _iterations;
+        public Dictionary<int, int> _ants = new Dictionary<int, int>();
         private double _beta;
         private double _alpha;
         private double _rho;
@@ -226,11 +226,11 @@ namespace WindowsFormsApp1
             }
             return operations.Last();
         }
-        public void Run()
+        public void Run(IProgress<int> progress)
         {
             CalculateFirstStartTimes();
 
-            for (int i = 0; i <= _iterations; i++)
+            for (int i = 0; i < _iterations; i++)
             {
                 //for(int j = 0; j <= _ants; j++)
                 foreach (var ant in _ants)
@@ -241,10 +241,12 @@ namespace WindowsFormsApp1
                         CalculateEndTime(solution);
                         UpdateBest(solution);
                         LocalUpdatePheromones(solution);
+                        
                         //Console.WriteLine($"Решение {ant.Key} муравья: лучшее время = {solution.TotalTime}");
                     }
                     else continue;
                 }
+                progress.Report(i);
                 GlobalUpdatePheromones();
 
                 Console.WriteLine($"Итерация {i}: лучшее время = {BestSolution.TotalTime}");

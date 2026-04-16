@@ -33,6 +33,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelAlpha = new System.Windows.Forms.Label();
@@ -52,9 +54,8 @@
             this.numericUpDownMin = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIterations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnts)).BeginInit();
@@ -64,7 +65,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -80,7 +80,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(573, 0);
+            this.panel3.Location = new System.Drawing.Point(605, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(46, 390);
             this.panel3.TabIndex = 12;
@@ -90,7 +90,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(46, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(527, 44);
+            this.panel4.Size = new System.Drawing.Size(559, 44);
             this.panel4.TabIndex = 14;
             // 
             // panel1
@@ -98,7 +98,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(46, 346);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 44);
+            this.panel1.Size = new System.Drawing.Size(559, 44);
             this.panel1.TabIndex = 15;
             // 
             // panel5
@@ -107,8 +107,36 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(46, 303);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(527, 43);
+            this.panel5.Size = new System.Drawing.Size(559, 43);
             this.panel5.TabIndex = 16;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.buttonSave, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(559, 43);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSave.BackColor = System.Drawing.Color.Black;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSave.ForeColor = System.Drawing.Color.White;
+            this.buttonSave.Location = new System.Drawing.Point(214, 4);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(131, 34);
+            this.buttonSave.TabIndex = 11;
+            this.buttonSave.Text = "Построить";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -144,17 +172,17 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(527, 259);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(559, 259);
             this.tableLayoutPanel1.TabIndex = 17;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Location = new System.Drawing.Point(266, 3);
+            this.dateTimePicker1.Location = new System.Drawing.Point(282, 3);
             this.dateTimePicker1.MinDate = new System.DateTime(2026, 4, 13, 20, 13, 10, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(258, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(274, 22);
             this.dateTimePicker1.TabIndex = 11;
             this.dateTimePicker1.Value = new System.DateTime(2026, 4, 13, 20, 13, 10, 0);
             // 
@@ -165,7 +193,7 @@
             this.labelAlpha.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAlpha.Location = new System.Drawing.Point(3, 104);
             this.labelAlpha.Name = "labelAlpha";
-            this.labelAlpha.Size = new System.Drawing.Size(257, 38);
+            this.labelAlpha.Size = new System.Drawing.Size(273, 38);
             this.labelAlpha.TabIndex = 9;
             this.labelAlpha.Text = "Параметр Альфа";
             // 
@@ -176,7 +204,7 @@
             this.labelAnts.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelAnts.Location = new System.Drawing.Point(3, 66);
             this.labelAnts.Name = "labelAnts";
-            this.labelAnts.Size = new System.Drawing.Size(257, 38);
+            this.labelAnts.Size = new System.Drawing.Size(273, 38);
             this.labelAnts.TabIndex = 4;
             this.labelAnts.Text = "Количество муравьев";
             // 
@@ -187,7 +215,7 @@
             this.labelIterations.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelIterations.Location = new System.Drawing.Point(3, 28);
             this.labelIterations.Name = "labelIterations";
-            this.labelIterations.Size = new System.Drawing.Size(257, 38);
+            this.labelIterations.Size = new System.Drawing.Size(273, 38);
             this.labelIterations.TabIndex = 2;
             this.labelIterations.Text = "Количество итераций";
             // 
@@ -205,7 +233,7 @@
             // 
             this.numericUpDownIterations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownIterations.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownIterations.Location = new System.Drawing.Point(266, 31);
+            this.numericUpDownIterations.Location = new System.Drawing.Point(282, 31);
             this.numericUpDownIterations.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -217,7 +245,7 @@
             0,
             0});
             this.numericUpDownIterations.Name = "numericUpDownIterations";
-            this.numericUpDownIterations.Size = new System.Drawing.Size(258, 32);
+            this.numericUpDownIterations.Size = new System.Drawing.Size(274, 32);
             this.numericUpDownIterations.TabIndex = 7;
             this.numericUpDownIterations.Value = new decimal(new int[] {
             100,
@@ -229,7 +257,7 @@
             // 
             this.numericUpDownAnts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownAnts.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownAnts.Location = new System.Drawing.Point(266, 69);
+            this.numericUpDownAnts.Location = new System.Drawing.Point(282, 69);
             this.numericUpDownAnts.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -241,7 +269,7 @@
             0,
             0});
             this.numericUpDownAnts.Name = "numericUpDownAnts";
-            this.numericUpDownAnts.Size = new System.Drawing.Size(258, 32);
+            this.numericUpDownAnts.Size = new System.Drawing.Size(274, 32);
             this.numericUpDownAnts.TabIndex = 8;
             this.numericUpDownAnts.Value = new decimal(new int[] {
             1,
@@ -252,10 +280,11 @@
             // numericUpDownAlpha
             // 
             this.numericUpDownAlpha.DecimalPlaces = 2;
+            this.numericUpDownAlpha.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownAlpha.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownAlpha.Location = new System.Drawing.Point(266, 107);
+            this.numericUpDownAlpha.Location = new System.Drawing.Point(282, 107);
             this.numericUpDownAlpha.Name = "numericUpDownAlpha";
-            this.numericUpDownAlpha.Size = new System.Drawing.Size(254, 32);
+            this.numericUpDownAlpha.Size = new System.Drawing.Size(274, 32);
             this.numericUpDownAlpha.TabIndex = 12;
             this.numericUpDownAlpha.Value = new decimal(new int[] {
             10,
@@ -270,7 +299,7 @@
             this.labelBeta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelBeta.Location = new System.Drawing.Point(3, 142);
             this.labelBeta.Name = "labelBeta";
-            this.labelBeta.Size = new System.Drawing.Size(257, 38);
+            this.labelBeta.Size = new System.Drawing.Size(273, 38);
             this.labelBeta.TabIndex = 13;
             this.labelBeta.Text = "Параметр Бета";
             // 
@@ -279,9 +308,9 @@
             this.numericUpDownBeta.DecimalPlaces = 2;
             this.numericUpDownBeta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownBeta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownBeta.Location = new System.Drawing.Point(266, 145);
+            this.numericUpDownBeta.Location = new System.Drawing.Point(282, 145);
             this.numericUpDownBeta.Name = "numericUpDownBeta";
-            this.numericUpDownBeta.Size = new System.Drawing.Size(258, 32);
+            this.numericUpDownBeta.Size = new System.Drawing.Size(274, 32);
             this.numericUpDownBeta.TabIndex = 14;
             this.numericUpDownBeta.Value = new decimal(new int[] {
             2,
@@ -296,7 +325,7 @@
             this.labelRho.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRho.Location = new System.Drawing.Point(3, 180);
             this.labelRho.Name = "labelRho";
-            this.labelRho.Size = new System.Drawing.Size(257, 38);
+            this.labelRho.Size = new System.Drawing.Size(273, 38);
             this.labelRho.TabIndex = 15;
             this.labelRho.Text = "Коэффициент испарения";
             // 
@@ -305,7 +334,7 @@
             this.numericUpDownRho.DecimalPlaces = 2;
             this.numericUpDownRho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownRho.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownRho.Location = new System.Drawing.Point(266, 183);
+            this.numericUpDownRho.Location = new System.Drawing.Point(282, 183);
             this.numericUpDownRho.Maximum = new decimal(new int[] {
             1,
             0,
@@ -317,7 +346,7 @@
             0,
             131072});
             this.numericUpDownRho.Name = "numericUpDownRho";
-            this.numericUpDownRho.Size = new System.Drawing.Size(258, 32);
+            this.numericUpDownRho.Size = new System.Drawing.Size(274, 32);
             this.numericUpDownRho.TabIndex = 16;
             this.numericUpDownRho.Value = new decimal(new int[] {
             5,
@@ -332,7 +361,7 @@
             this.labelPheromone.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelPheromone.Location = new System.Drawing.Point(3, 218);
             this.labelPheromone.Name = "labelPheromone";
-            this.labelPheromone.Size = new System.Drawing.Size(257, 44);
+            this.labelPheromone.Size = new System.Drawing.Size(273, 44);
             this.labelPheromone.TabIndex = 17;
             this.labelPheromone.Text = "Уровень феромона";
             // 
@@ -348,11 +377,11 @@
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(266, 221);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(282, 221);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(258, 38);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(274, 38);
             this.tableLayoutPanel2.TabIndex = 18;
             // 
             // numericUpDownMax
@@ -360,7 +389,7 @@
             this.numericUpDownMax.DecimalPlaces = 2;
             this.numericUpDownMax.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownMax.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownMax.Location = new System.Drawing.Point(170, 3);
+            this.numericUpDownMax.Location = new System.Drawing.Point(185, 3);
             this.numericUpDownMax.Maximum = new decimal(new int[] {
             1,
             0,
@@ -385,7 +414,7 @@
             this.numericUpDownMin.DecimalPlaces = 2;
             this.numericUpDownMin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDownMin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDownMin.Location = new System.Drawing.Point(38, 3);
+            this.numericUpDownMin.Location = new System.Drawing.Point(47, 3);
             this.numericUpDownMin.Minimum = new decimal(new int[] {
             1,
             0,
@@ -406,7 +435,7 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 38);
+            this.label2.Size = new System.Drawing.Size(38, 38);
             this.label2.TabIndex = 0;
             this.label2.Text = "от";
             // 
@@ -414,46 +443,18 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(132, 0);
+            this.label3.Location = new System.Drawing.Point(141, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 38);
+            this.label3.Size = new System.Drawing.Size(38, 38);
             this.label3.TabIndex = 1;
             this.label3.Text = "до";
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.buttonSave, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(527, 43);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSave.BackColor = System.Drawing.Color.Black;
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(198, 4);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(131, 34);
-            this.buttonSave.TabIndex = 11;
-            this.buttonSave.Text = "Построить";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // BuildScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(619, 390);
+            this.ClientSize = new System.Drawing.Size(651, 390);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
@@ -463,6 +464,7 @@
             this.Name = "BuildScheduleForm";
             this.Text = "BuildScheduleForm";
             this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIterations)).EndInit();
@@ -473,7 +475,6 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

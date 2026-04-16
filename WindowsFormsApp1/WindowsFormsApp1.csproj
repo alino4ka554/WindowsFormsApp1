@@ -89,6 +89,12 @@
     <Compile Include="OperationAdd.Designer.cs">
       <DependentUpon>OperationAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProccessScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProccessScheduleForm.Designer.cs">
+      <DependentUpon>ProccessScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectAdd.cs">
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OperationAdd.resx">
       <DependentUpon>OperationAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProccessScheduleForm.resx">
+      <DependentUpon>ProccessScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectAdd.resx">
       <DependentUpon>ProjectAdd.cs</DependentUpon>

@@ -19,9 +19,20 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            var project = new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text);
-            DataStorage.Projects.Add(project.Id, project);
-            this.Close();
+            if (Validation())
+            {
+                var project = new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text);
+                DataStorage.Projects.Add(project.Id, project);
+                this.Close();
+            }
+        }
+        private bool Validation()
+        {
+            if (string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrWhiteSpace(textBoxName.Text))
+                MessageBox.Show("Введите название проекта!", "Ошибка добавления проекта", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else 
+                return true;
+            return false;
         }
     }
 }

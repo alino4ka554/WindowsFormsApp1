@@ -45,11 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelPredecessors = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.checkedListBoxPrecessors = new System.Windows.Forms.CheckedListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.checkedListBoxPrecessors = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -270,6 +270,15 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // checkedListBoxPrecessors
+            // 
+            this.checkedListBoxPrecessors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxPrecessors.FormattingEnabled = true;
+            this.checkedListBoxPrecessors.Location = new System.Drawing.Point(3, 260);
+            this.checkedListBoxPrecessors.Name = "checkedListBoxPrecessors";
+            this.checkedListBoxPrecessors.Size = new System.Drawing.Size(376, 116);
+            this.checkedListBoxPrecessors.TabIndex = 12;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -303,15 +312,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(382, 44);
             this.panel4.TabIndex = 13;
-            // 
-            // checkedListBoxPrecessors
-            // 
-            this.checkedListBoxPrecessors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkedListBoxPrecessors.FormattingEnabled = true;
-            this.checkedListBoxPrecessors.Location = new System.Drawing.Point(3, 260);
-            this.checkedListBoxPrecessors.Name = "checkedListBoxPrecessors";
-            this.checkedListBoxPrecessors.Size = new System.Drawing.Size(376, 116);
-            this.checkedListBoxPrecessors.TabIndex = 12;
             // 
             // OperationAdd
             // 

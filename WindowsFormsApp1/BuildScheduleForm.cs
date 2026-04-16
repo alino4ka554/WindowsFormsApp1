@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (CheckPheromone())
+            if (Validation())
             {
                 var operations = DataStorage.Operations;
                 var colony = new ACO(operations, iterations: (int)numericUpDownIterations.Value, 
@@ -35,12 +35,14 @@ namespace WindowsFormsApp1
                     beta: (double)numericUpDownBeta.Value, alpha: (int)numericUpDownAlpha.Value, 
                     rho: (double)numericUpDownRho.Value, tauMin: (double)numericUpDownMin.Value, 
                     tauMax: (double)numericUpDownMax.Value);
-                colony.Run();
+                ProccessScheduleForm proccessScheduleForm = new ProccessScheduleForm(colony);
+                
+                proccessScheduleForm.ShowDialog();
                 DataStorage.Solution = colony.BestSolution;
                 this.Close();
             }
         }
-        public bool CheckPheromone()
+        public bool Validation()
         {
             if (numericUpDownMax.Value > numericUpDownMin.Value)
                 return true;

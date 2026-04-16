@@ -72,26 +72,44 @@ namespace WindowsFormsApp1
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            var preds = checkedListBoxPrecessors.CheckedItems
-                .Cast<Operation>()
-                .Select(op => op.Id)
-                .ToList();
-            Operation operation = new Operation
+            if (Validation())
             {
-                Id = DataStorage.Operations.Count + 1,
-                Name = textBoxName.Text,
-                NormalTime = sliderTime.LowerValue,
-                CrashTime = sliderTime.UpperValue,
-                NormalCost = sliderCost.LowerValue,
-                CrashCost = sliderCost.UpperValue,
-                Project = ProjectId,
-                Resource = (int)comboBoxExecutors.SelectedValue,
-                DependsOn = preds
-            };
-            DataStorage.Projects[ProjectId].Operations.Add(operation);
-            DataStorage.Operations.Add(operation.Id, operation);
-            this.Close();
+                var preds = checkedListBoxPrecessors.CheckedItems
+                    .Cast<Operation>()
+                    .Select(op => op.Id)
+                    .ToList();
+                Operation operation = new Operation
+                {
+                    Id = DataStorage.Operations.Count + 1,
+                    Name = textBoxName.Text,
+                    NormalTime = sliderTime.LowerValue,
+                    CrashTime = sliderTime.UpperValue,
+                    NormalCost = sliderCost.LowerValue,
+                    CrashCost = sliderCost.UpperValue,
+                    Project = ProjectId,
+                    Resource = (int)comboBoxExecutors.SelectedValue,
+                    DependsOn = preds
+                };
+                DataStorage.Projects[ProjectId].Operations.Add(operation);
+                DataStorage.Operations.Add(operation.Id, operation);
+                this.Close();
+            }
         }
+        private bool Validation()
+        {
+            var listOfErrors = new List<string>();
+            if (string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrWhiteSpace(textBoxName.Text))
+                listOfErrors.Add("Введите название задачи!");
+            if (comboBoxExecutors.SelectedValue == null)
+                listOfErrors.Add("Выберите исполнителя!");
+            if (listOfErrors.Count > 0)
+                MessageBox.Show(string.Join("\n", listOfErrors), "Ошибка добавления задачи", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                return true;
+            return false;
+
+        }
+
     }
     public class RangeTrackBar : Control
     {

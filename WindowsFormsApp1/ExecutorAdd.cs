@@ -19,9 +19,20 @@ namespace WindowsFormsApp1
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            var executor = new Resource(DataStorage.Executors.Count + 1, textBoxName.Text);
-            DataStorage.Executors.Add(executor.Id, executor);
-            this.Close();
+            if (Validation())
+            {
+                var executor = new Resource(DataStorage.Executors.Count + 1, textBoxName.Text);
+                DataStorage.Executors.Add(executor.Id, executor);
+                this.Close();
+            }
+        }
+        private bool Validation()
+        {
+            if (string.IsNullOrEmpty(textBoxName.Text) || string.IsNullOrWhiteSpace(textBoxName.Text))
+                MessageBox.Show("Введите ФИО исполнителя!", "Ошибка добавления исполнителя", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else
+                return true;
+            return false;
         }
     }
 }

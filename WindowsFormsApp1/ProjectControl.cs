@@ -17,9 +17,24 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             ProjectId = projectId;
+            LoadOperations();
+            labelHeader.Text = DataStorage.Projects[ProjectId].Name;
+        }
+
+        public void LoadOperations()
+        {
             if (DataStorage.Projects[ProjectId].Operations.Count > 0)
-                LoadOperations();
-            
+            {
+                dataGridView1.Visible = true;
+                dataGridView1.Rows.Clear();
+                var ops = DataStorage.Projects[ProjectId].Operations;
+                foreach (var op in ops)
+                {
+                    var executorName = DataStorage.Executors[op.Resource].Name;
+                    dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{executorName}", $"{op.NormalTime} - {op.CrashTime}", $"{op.NormalCost} - {op.CrashCost}");
+                }
+                dataGridView1.ClearSelection();
+            }
             else
             {
                 dataGridView1.Visible = false;
@@ -29,25 +44,20 @@ namespace WindowsFormsApp1
                 panel4.Controls.Add(label);
                 label.Dock = DockStyle.Fill;
             }
-            
-        }
-        public void LoadOperations()
-        {
-            dataGridView1.Visible = true;
-            dataGridView1.Rows.Clear();
-            var ops = DataStorage.Projects[ProjectId].Operations;
-            foreach (var op in ops)
-            {
-                var executorName = DataStorage.Executors[op.Resource].Name;
-                dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{executorName}", $"{op.NormalTime} - {op.CrashTime}", $"{op.NormalCost} - {op.CrashCost}");
-            }
-            dataGridView1.ClearSelection();
         }
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
             OperationAdd operationAdd = new OperationAdd(ProjectId);
             operationAdd.ShowDialog();
             LoadOperations();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            ProjectsControl projectsControl = new ProjectsControl();
+            Form1 form = Application.OpenForms["Form1"] as Form1;
+            form?.ShowSideMenu();
+            form.OpenPage(projectsControl);
         }
     }
 }
