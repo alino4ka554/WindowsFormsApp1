@@ -57,6 +57,7 @@
     <Compile Include="BuildScheduleForm.Designer.cs">
       <DependentUpon>BuildScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CPM.cs" />
     <Compile Include="DataStorage.cs" />
     <Compile Include="ExecutorAdd.cs">
       <SubType>Form</SubType>
@@ -216,6 +217,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\free-icon-back-left-arrow-circular-button-outline-54623.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-delete-button-5561819.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-list-137942.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\free-icon-list-137942 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

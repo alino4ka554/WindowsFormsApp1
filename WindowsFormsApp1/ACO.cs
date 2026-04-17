@@ -167,7 +167,8 @@ namespace WindowsFormsApp1
                 foreach (var op in _operations[currentOp].DependsOn)
                 {
                     if (visited.Contains(op)) continue;
-                    VisitOperation(-2, op, ref visited, solution);
+                    if(_operations.ContainsKey(op))
+                        VisitOperation(-2, op, ref visited, solution);
                 }
             }
             if (!visited.Contains(currentOp))
@@ -281,8 +282,11 @@ namespace WindowsFormsApp1
                         var flag = 0.0;
                         foreach (var pred in _operations[op].DependsOn)
                         {
-                            if (_operations[pred].StartTime + _operations[pred].ActualTime > flag)
-                                flag = _operations[pred].StartTime + _operations[pred].ActualTime;
+                            if (_operations.ContainsKey(pred))
+                            {
+                                if (_operations[pred].StartTime + _operations[pred].ActualTime > flag)
+                                    flag = _operations[pred].StartTime + _operations[pred].ActualTime;
+                            }
                         }
                         _operations[op].StartTime = flag;
                     }

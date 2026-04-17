@@ -25,7 +25,8 @@ namespace WindowsFormsApp1
         {
             if (DataStorage.Projects[ProjectId].Operations.Count > 0)
             {
-                dataGridView1.Visible = true;
+                buttonDeleteProject.Visible = true;
+                tableLayoutPanel1.Visible = false;
                 dataGridView1.Rows.Clear();
                 var ops = DataStorage.Projects[ProjectId].Operations;
                 foreach (var op in ops)
@@ -37,12 +38,8 @@ namespace WindowsFormsApp1
             }
             else
             {
-                dataGridView1.Visible = false;
-                Label label = new Label();
-                label.Text = "Пока нет задач";
-                label.Font = new Font("Calibri", 14, FontStyle.Bold);
-                panel4.Controls.Add(label);
-                label.Dock = DockStyle.Fill;
+                buttonDeleteProject.Visible = false;
+                tableLayoutPanel1.Visible = true;
             }
         }
         private void buttonAddProject_Click(object sender, EventArgs e)
@@ -58,6 +55,24 @@ namespace WindowsFormsApp1
             Form1 form = Application.OpenForms["Form1"] as Form1;
             form?.ShowSideMenu();
             form.OpenPage(projectsControl);
+        }
+
+        private void buttonDeleteProject_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить выбранные задачи?", "Подтверждение",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        int operationId = (int)row.Cells[0].Value;
+                        DataStorage.Operations.Remove(operationId);
+                        DataStorage.Projects[ProjectId].Operations.RemoveAll(op => op.Id == operationId);
+                        LoadOperations();
+                    }
+                }
+            }
         }
     }
 }

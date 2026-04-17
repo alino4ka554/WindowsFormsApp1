@@ -16,6 +16,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadProjects();
+            label1.Image = ImageHelper.MakeGrayscale(label1.Image);
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 
         }
@@ -23,7 +24,8 @@ namespace WindowsFormsApp1
         {
             if (DataStorage.Projects.Count > 0)
             {
-                dataGridView1.Visible = true;
+                buttonDeleteProject.Visible = true;
+                tableLayoutPanel1.Visible = false;
                 dataGridView1.Rows.Clear();
                 foreach (var project in DataStorage.Projects)
                 {
@@ -33,12 +35,8 @@ namespace WindowsFormsApp1
             }
             else
             {
-                dataGridView1.Visible = false;
-                Label label = new Label();
-                label.Text = "Пока нет проектов";
-                label.Font = new Font("Calibri", 14, FontStyle.Bold);
-                panel4.Controls.Add(label);
-                label.Dock = DockStyle.Fill;
+                buttonDeleteProject.Visible = false;
+                tableLayoutPanel1.Visible = true;
             }
 
         }
@@ -61,17 +59,31 @@ namespace WindowsFormsApp1
             form?.HideSideMenu();
             form.OpenPage(projectPage);
         }
-
         private void buttonAddProject_Click(object sender, EventArgs e)
         {
             ProjectAdd projectAdd = new ProjectAdd();
             projectAdd.ShowDialog();
             LoadProjects();
         }
-
         private void buttonDeleteProject_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Удалить выбранные проекты?", "Подтверждение",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        int projectId = (int)row.Cells[0].Value;
+                        var project = DataStorage.Projects[projectId];
+                        foreach (var op in project.Operations)
+                        DataStorage.Operations.Remove(op.Id);
+                        DataStorage.Projects.Remove(projectId);
+                        LoadProjects();
+                    }
+                }
+            }
+            
         }
 
     }

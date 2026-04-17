@@ -118,29 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="free-icon-business-reporting-12238483 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-business-reporting-12238483 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free-icon-project-5956597" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-project-5956597.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-project-5956597 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-project-5956597 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="free-icon-schedule-6826122" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-schedule-6826122.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-project-5956597 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-project-5956597 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="free-icon-business-reporting-12238483 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-business-reporting-12238483 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="free-icon-user-7323280" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-user-7323280.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="free-icon-project-5956597" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-project-5956597.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free-icon-business-reporting-12238483 (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-business-reporting-12238483 (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="free-icon-business-reporting-12238483 (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-business-reporting-12238483 (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-business-reporting-12238483 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-business-reporting-12238483 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free-icon-user-7323280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-user-7323280.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-back-left-arrow-circular-button-outline-54623" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-back-left-arrow-circular-button-outline-54623.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-business-reporting-12238483 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-business-reporting-12238483 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="free-icon-performance-8282837 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-performance-8282837 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,10 +148,19 @@
   <data name="free-icon-calendar-8302434 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\free-icon-calendar-8302434 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-project-5956597 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-project-5956597 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free-icon-delete-button-5561819" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-delete-button-5561819.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="free-icon-back-left-arrow-circular-button-outline-54623" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\free-icon-back-left-arrow-circular-button-outline-54623.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="free-icon-project-5956597 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-project-5956597 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-business-reporting-12238483 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-business-reporting-12238483 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-list-137942" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-list-137942.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="free-icon-list-137942 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\free-icon-list-137942 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

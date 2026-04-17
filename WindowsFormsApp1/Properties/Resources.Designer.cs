@@ -123,6 +123,36 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap free_icon_delete_button_5561819 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-delete-button-5561819", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_list_137942 {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-list-137942", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free_icon_list_137942__1_ {
+            get {
+                object obj = ResourceManager.GetObject("free-icon-list-137942 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap free_icon_performance_8282837__1_ {
             get {
                 object obj = ResourceManager.GetObject("free-icon-performance-8282837 (1)", resourceCulture);

@@ -21,7 +21,8 @@ namespace WindowsFormsApp1
         {
             if (DataStorage.Executors.Count > 0)
             {
-                dataGridView1.Visible = true;
+                buttonDeleteProject.Visible = true;
+                tableLayoutPanel1.Visible = false;
                 dataGridView1.Rows.Clear();
                 foreach (var executor in DataStorage.Executors)
                 {
@@ -31,12 +32,8 @@ namespace WindowsFormsApp1
             }
             else
             {
-                dataGridView1.Visible = false;
-                Label label = new Label();
-                label.Text = "Пока нет исполнителей";
-                label.Font = new Font("Calibri", 14, FontStyle.Bold);
-                panel5.Controls.Add(label);
-                label.Dock = DockStyle.Fill;
+                buttonDeleteProject.Visible = false;
+                tableLayoutPanel1.Visible = true;
             }
         }
         private void buttonAddProject_Click(object sender, EventArgs e)
@@ -44,6 +41,32 @@ namespace WindowsFormsApp1
             ExecutorAdd executorAdd = new ExecutorAdd();
             executorAdd.ShowDialog();
             LoadExecutors();
+        }
+
+        private void buttonDeleteProject_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Удалить выбранных исполнителей и все их задачи?", "Подтверждение",
+                        MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    if (row.Cells[0].Value != null)
+                    {
+                        int executorId = (int)row.Cells[0].Value;
+                        var opsToDelete = DataStorage.Operations.Values
+                            .Where(op => op.Resource == executorId)
+                            .ToList();
+                        foreach (var op in opsToDelete)
+                        {
+                            if (DataStorage.Projects.ContainsKey(op.Project))
+                                DataStorage.Projects[op.Project].Operations.RemoveAll(o => o.Id == op.Id);
+                            DataStorage.Operations.Remove(op.Id);
+                        }
+                        DataStorage.Executors.Remove(executorId);
+                        LoadExecutors();
+                    }
+                }
+            }
         }
     }
 }

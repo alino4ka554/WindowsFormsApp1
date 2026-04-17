@@ -35,27 +35,30 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelHeader = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Executor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelHeader = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonSpeedUp);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 332);
             this.panel1.Name = "panel1";
@@ -70,12 +73,13 @@
             this.buttonSpeedUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSpeedUp.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonSpeedUp.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonSpeedUp.Location = new System.Drawing.Point(46, 20);
+            this.buttonSpeedUp.Location = new System.Drawing.Point(164, 8);
             this.buttonSpeedUp.Name = "buttonSpeedUp";
             this.buttonSpeedUp.Size = new System.Drawing.Size(167, 45);
             this.buttonSpeedUp.TabIndex = 2;
             this.buttonSpeedUp.Text = "Ускорить";
             this.buttonSpeedUp.UseVisualStyleBackColor = false;
+            this.buttonSpeedUp.Click += new System.EventHandler(this.buttonSpeedUp_Click);
             // 
             // panel3
             // 
@@ -119,8 +123,7 @@
             this.StartTime,
             this.EndTime,
             this.Project,
-            this.Executor,
-            this.Edit});
+            this.Executor});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -139,6 +142,52 @@
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(736, 269);
             this.dataGridView1.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.flowLayoutPanel1);
+            this.panel4.Controls.Add(this.labelHeader);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(46, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(736, 63);
+            this.panel4.TabIndex = 8;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.buttonSpeedUp);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(402, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 63);
+            this.flowLayoutPanel1.TabIndex = 7;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // labelHeader
+            // 
+            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Left;
+            this.labelHeader.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelHeader.Location = new System.Drawing.Point(0, 0);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.labelHeader.Size = new System.Drawing.Size(300, 63);
+            this.labelHeader.TabIndex = 4;
+            this.labelHeader.Text = "Расписание";
+            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.tableLayoutPanel1);
+            this.panel5.Controls.Add(this.dataGridView1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(46, 63);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(736, 269);
+            this.panel5.TabIndex = 9;
             // 
             // Id
             // 
@@ -183,57 +232,60 @@
             this.Executor.Name = "Executor";
             this.Executor.ReadOnly = true;
             // 
-            // Edit
+            // label2
             // 
-            this.Edit.HeaderText = "";
-            this.Edit.MinimumWidth = 6;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Редактировать";
-            this.Edit.UseColumnTextForButtonValue = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.DimGray;
+            this.label2.Location = new System.Drawing.Point(3, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(730, 43);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Актуальное расписание отсутствует";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel4
+            // label1
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.flowLayoutPanel1);
-            this.panel4.Controls.Add(this.labelHeader);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(46, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(736, 63);
-            this.panel4.TabIndex = 8;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Enabled = false;
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Image = global::WindowsFormsApp1.Properties.Resources.free_icon_schedule_6826122;
+            this.label1.Location = new System.Drawing.Point(3, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(730, 80);
+            this.label1.TabIndex = 0;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // flowLayoutPanel1
+            // label4
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(402, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 63);
-            this.flowLayoutPanel1.TabIndex = 7;
-            this.flowLayoutPanel1.WrapContents = false;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.DimGray;
+            this.label4.Location = new System.Drawing.Point(3, 172);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(730, 47);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Необходимо построить расписание";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelHeader
+            // tableLayoutPanel1
             // 
-            this.labelHeader.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelHeader.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelHeader.Location = new System.Drawing.Point(0, 0);
-            this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.labelHeader.Size = new System.Drawing.Size(300, 63);
-            this.labelHeader.TabIndex = 4;
-            this.labelHeader.Text = "Расписание";
-            this.labelHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.dataGridView1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(46, 63);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(736, 269);
-            this.panel5.TabIndex = 9;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(736, 269);
+            this.tableLayoutPanel1.TabIndex = 11;
             // 
             // ScheduleControl
             // 
@@ -248,10 +300,11 @@
             this.Name = "ScheduleControl";
             this.Size = new System.Drawing.Size(828, 405);
             this.Tag = "Расписание";
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel4.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -263,16 +316,19 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label labelHeader;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Project;
         private System.Windows.Forms.DataGridViewTextBoxColumn Executor;
-        private System.Windows.Forms.DataGridViewButtonColumn Edit;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label labelHeader;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

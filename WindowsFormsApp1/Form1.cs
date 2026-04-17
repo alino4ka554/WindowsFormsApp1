@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,7 +113,7 @@ namespace WindowsFormsApp1
             var operations = new List<Operation>();
             Workbook wb = new Workbook(path);
             WorksheetCollection collection = wb.Worksheets;
-            for (int worksheetIndex = 7; worksheetIndex < 8; worksheetIndex++)
+            for (int worksheetIndex = 0; worksheetIndex < 1; worksheetIndex++)
             {
                 Worksheet worksheet = collection[worksheetIndex];
                 int rows = worksheet.Cells.MaxDataRow;
@@ -180,6 +181,10 @@ namespace WindowsFormsApp1
         {
             BuildScheduleForm form = new BuildScheduleForm();
             form.ShowDialog();
+            if(CurrentControl is ScheduleControl sch)
+            {
+                OpenPage(new ScheduleControl());
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -210,6 +215,38 @@ namespace WindowsFormsApp1
                     }
                 }
             }
+        }
+    }
+    public static class ImageHelper
+    {
+        public static Image MakeGrayscale(Image original)
+        {
+            if (original == null) return null;
+
+            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
+
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                ColorMatrix colorMatrix = new ColorMatrix(new float[][]
+                {
+                new float[] {0.3f, 0.3f, 0.3f, 0, 0},
+                new float[] {0.59f, 0.59f, 0.59f, 0, 0},
+                new float[] {0.11f, 0.11f, 0.11f, 0, 0},
+                new float[] {0,     0,     0,     1, 0},
+                new float[] {0,     0,     0,     0, 1}
+                });
+
+                ImageAttributes attributes = new ImageAttributes();
+                attributes.SetColorMatrix(colorMatrix);
+
+                g.DrawImage(original,
+                    new Rectangle(0, 0, original.Width, original.Height),
+                    0, 0, original.Width, original.Height,
+                    GraphicsUnit.Pixel,
+                    attributes);
+            }
+
+            return newBitmap;
         }
     }
 }

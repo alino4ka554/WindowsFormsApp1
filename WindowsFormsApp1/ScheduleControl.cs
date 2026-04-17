@@ -15,30 +15,39 @@ namespace WindowsFormsApp1
         public ScheduleControl()
         {
             InitializeComponent();
-            if (DataStorage.Solution != null)
-                LoadSchedule();
-            else
+            dataGridView1.SelectionChanged += (s, e) =>
             {
-                dataGridView1.Visible = false;
-                Label label = new Label();
-                label.Text = "Нет актуального расписания";
-                label.Font = new Font("Calibri", 14, FontStyle.Bold);
-                panel5.Controls.Add(label);
-                label.Dock = DockStyle.Fill;
-            }
+                dataGridView1.ClearSelection();
+            };
+            LoadSchedule();
         }
         public void LoadSchedule()
         {
-            dataGridView1.Visible = true;
-            dataGridView1.Rows.Clear();
-            foreach (var ops in DataStorage.Solution.Operations)
+            if (DataStorage.Solution != null)
             {
-                var op = ops.Value;
-                var projectName = DataStorage.Projects[op.Project].Name;
-                var executorName = DataStorage.Executors[op.Resource].Name;
-                dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{op.StartTime}", $"{op.EndTime}", $"{projectName}", $"{executorName}");
+                tableLayoutPanel1.Visible = false;
+                buttonSpeedUp.Visible = true;
+                dataGridView1.Rows.Clear();
+                foreach (var ops in DataStorage.Solution.Operations)
+                {
+                    var op = ops.Value;
+                    var projectName = DataStorage.Projects[op.Project].Name;
+                    var executorName = DataStorage.Executors[op.Resource].Name;
+                    dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{op.StartTime}", $"{op.EndTime}", $"{projectName}", $"{executorName}");
+                }
             }
-            
+            else
+            {
+                tableLayoutPanel1.Visible = true;
+                buttonSpeedUp.Visible = false;
+            }
+        }
+
+        private void buttonSpeedUp_Click(object sender, EventArgs e)
+        {
+            var criticalWayMethod = new CPM(DataStorage.Solution, 0.01);
+            criticalWayMethod.Run();
+            LoadSchedule();
         }
     }
 }
