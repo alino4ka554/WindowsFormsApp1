@@ -16,10 +16,8 @@ namespace WindowsFormsApp1
         private double _tauMin;
         private double _tauMax;
         private double _Q;
-        private Dictionary<int, List<int>> _probableWay = new Dictionary<int, List<int>>();
         private Dictionary<int, double> _resourceFree = new Dictionary<int, double>();
         private Dictionary<int, Operation> _operations = new Dictionary<int, Operation>();
-        private Dictionary<int, Operation> ops = new Dictionary<int, Operation>();
         public Dictionary<(int, int), double> _pheromones = new Dictionary<(int, int), double>();
         public Dictionary<(int, int), double> _localPheromones = new Dictionary<(int, int), double>();
         public Dictionary<(int, int), double> _probabilities = new Dictionary<(int, int), double>();
@@ -28,8 +26,6 @@ namespace WindowsFormsApp1
         private Random _rnd = new Random();
         private Dictionary<int, List<int>> _resourcesOperations = new Dictionary<int, List<int>>();
         public Dictionary<int, List<int>> _projectsOperations = new Dictionary<int, List<int>>();
-        private Dictionary<int, Dictionary<int, List<int>>> _opsWithOneResInOneProj = new Dictionary<int, Dictionary<int, List<int>>>();
-        private ScheduleSolution oldBest;
         public double GetRandomChoice() => _rnd.NextDouble();
 
         public ACO(Dictionary<int,Operation> operations, int iterations, int ants,
@@ -37,7 +33,6 @@ namespace WindowsFormsApp1
                          double tauMin, double tauMax)
         {
             _operations = operations;
-            ops = operations;
             _iterations = iterations;
             //_ants = ants;
             _beta = beta;
@@ -63,22 +58,6 @@ namespace WindowsFormsApp1
                 int resourceId = i % resources.Count;
                 _ants.Add(i, resourceId);
             }
-        }
-        private double CalculateQ(List<Operation> operations)
-        {
-            double totalWork = operations.Sum(op => op.ActualTime);
-
-            double minPossibleTime = operations
-                .GroupBy(op => op.Project)
-                .Max(g => g.Sum(op => op.ActualTime));
-
-            double resourceTime = operations
-                .GroupBy(op => op.Resource)
-                .Max(g => g.Sum(op => op.ActualTime));
-
-            double estimatedMakespan = Math.Max(minPossibleTime, resourceTime);
-
-            return 0.02 * estimatedMakespan;
         }
         public void InitPheromones()
         {
@@ -135,10 +114,8 @@ namespace WindowsFormsApp1
             var currentRes = firstResource;
             var flag = 7;
             while (visited.Count != operationsCopy.Count)
-            //foreach (var res in _resourcesOperations) 
             {
                 var operationsByResource = new List<int>(_resourcesOperations.ElementAt(currentRes).Value);
-                //var operationsByResource = new List<int>(res.Value);
                 var prevOp = -1;
                 foreach (var op in operationsByResource)
                 {
@@ -199,7 +176,6 @@ namespace WindowsFormsApp1
         public int CalculateNextOperation(int currentOp, List<int> operations, Dictionary<int, Operation> currentOperations)
         {
             Dictionary<int, double> probabilities = new Dictionary<int, double>();
-            // double sum = operations.Sum(op => _operations[op].StartTime);
             double summary = 0;
             foreach (var operation in operations)
             {
@@ -233,7 +209,6 @@ namespace WindowsFormsApp1
 
             for (int i = 0; i < _iterations; i++)
             {
-                //for(int j = 0; j <= _ants; j++)
                 foreach (var ant in _ants)
                 {
                     var solution = RecursiveBuild(ant.Value);
@@ -242,7 +217,6 @@ namespace WindowsFormsApp1
                         CalculateEndTime(solution);
                         UpdateBest(solution);
                         LocalUpdatePheromones(solution);
-                        
                         //Console.WriteLine($"Решение {ant.Key} муравья: лучшее время = {solution.TotalTime}");
                     }
                     else continue;
@@ -302,15 +276,12 @@ namespace WindowsFormsApp1
         }
         public void GlobalUpdatePheromones()
         {
-            // 1. Сначала испарение для ВСЕХ ребер
             foreach (var key in _pheromones.Keys.ToList())
             {
                 _pheromones[key] *= (1 - _rho);
                 if (_pheromones[key] < _tauMin)
                     _pheromones[key] = _tauMin;
             }
-
-            // 2. Потом добавление от лучшего решения (элитарная стратегия)
             foreach (var ops in BestSolution.W.Keys)
             {
                 if (BestSolution.W[ops] == 1)
@@ -320,8 +291,6 @@ namespace WindowsFormsApp1
                         _pheromones[ops] = _tauMax;
                 }
             }
-
-            // 3. Сброс локальных феромонов
             foreach (var local in _localPheromones.Keys.ToList())
             {
                 _localPheromones[local] = 0;

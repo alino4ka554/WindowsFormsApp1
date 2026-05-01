@@ -216,6 +216,11 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ExcelExporter.ExportToExcel(DataStorage.Solution, "schedule.xlsx");
+        }
     }
     public static class ImageHelper
     {
