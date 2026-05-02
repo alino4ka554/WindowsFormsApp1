@@ -21,8 +21,20 @@ namespace WindowsFormsApp1
             };
             LoadSchedule();
         }
+        public void HideBuildSolution()
+        {
+            buttonBuildSolution.Visible = false;
+        }
+        public void ShowBuildSolution()
+        {
+            buttonBuildSolution.Visible = true;
+        }
         public void LoadSchedule()
         {
+            if (DataStorage.Projects.Count > 0)
+                ShowBuildSolution();
+            else
+                HideBuildSolution();
             if (DataStorage.Solution != null)
             {
                 tableLayoutPanel1.Visible = false;
@@ -47,6 +59,13 @@ namespace WindowsFormsApp1
         {
             var criticalWayMethod = new CPM(DataStorage.Solution, 0.01);
             criticalWayMethod.Run();
+            LoadSchedule();
+        }
+
+        private async void buttonBuildSolution_Click(object sender, EventArgs e)
+        {
+            BuildScheduleForm form = new BuildScheduleForm();
+            form.ShowDialog();
             LoadSchedule();
         }
     }

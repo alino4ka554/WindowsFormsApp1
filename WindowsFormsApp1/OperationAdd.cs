@@ -82,8 +82,8 @@ namespace WindowsFormsApp1
                 {
                     Id = DataStorage.Operations.Count + 1,
                     Name = textBoxName.Text,
-                    NormalTime = sliderTime.LowerValue,
-                    CrashTime = sliderTime.UpperValue,
+                    NormalTime = sliderTime.UpperValue,
+                    CrashTime = sliderTime.LowerValue,
                     NormalCost = sliderCost.LowerValue,
                     CrashCost = sliderCost.UpperValue,
                     Project = ProjectId,
@@ -163,21 +163,17 @@ namespace WindowsFormsApp1
             int x2 = ValueToX(UpperValue);
             int y = Height / 2;
 
-            // линия
             g.DrawLine(Pens.Gray,
                 padding + radius,
                 y,
                 Width - padding - radius,
                 y);
-
-            // диапазон
             g.FillRectangle(Brushes.LightBlue,
                 x1,
                 y - 2,
                 x2 - x1,
                 4);
 
-            // кружки
             g.FillEllipse(Brushes.Blue,
                 x1 - radius,
                 y - radius,
@@ -221,7 +217,6 @@ namespace WindowsFormsApp1
 
             int value = Minimum + (x - (padding + radius)) * (Maximum - Minimum) / trackWidth;
 
-            // ограничение
             if (value < Minimum) value = Minimum;
             if (value > Maximum) value = Maximum;
 

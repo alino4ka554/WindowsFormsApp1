@@ -32,37 +32,23 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonBuildSolution = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkExit = new System.Windows.Forms.LinkLabel();
-            this.labelName = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -73,25 +59,25 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(280, 613);
             this.panel1.TabIndex = 0;
             // 
-            // button5
+            // button6
             // 
-            this.button5.BackColor = System.Drawing.Color.LightGray;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 400);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(280, 100);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Импорт";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button6.BackColor = System.Drawing.Color.LightGray;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(0, 400);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(280, 100);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Экспорт";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button4
             // 
@@ -184,9 +170,9 @@ namespace WindowsFormsApp1
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(280, 54);
+            this.panel2.Location = new System.Drawing.Point(280, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(798, 465);
+            this.panel2.Size = new System.Drawing.Size(798, 590);
             this.panel2.TabIndex = 1;
             // 
             // label1
@@ -195,51 +181,10 @@ namespace WindowsFormsApp1
             this.label1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(798, 465);
+            this.label1.Size = new System.Drawing.Size(798, 590);
             this.label1.TabIndex = 0;
             this.label1.Text = "Добро пожаловать!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.tableLayoutPanel1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(280, 519);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(798, 94);
-            this.panel5.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.buttonBuildSolution, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 94);
-            this.tableLayoutPanel1.TabIndex = 6;
-            // 
-            // buttonBuildSolution
-            // 
-            this.buttonBuildSolution.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonBuildSolution.BackColor = System.Drawing.Color.Black;
-            this.buttonBuildSolution.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBuildSolution.FlatAppearance.BorderSize = 0;
-            this.buttonBuildSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBuildSolution.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonBuildSolution.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonBuildSolution.Location = new System.Drawing.Point(246, 24);
-            this.buttonBuildSolution.Name = "buttonBuildSolution";
-            this.buttonBuildSolution.Size = new System.Drawing.Size(305, 45);
-            this.buttonBuildSolution.TabIndex = 3;
-            this.buttonBuildSolution.Text = "Построить расписание";
-            this.buttonBuildSolution.UseVisualStyleBackColor = false;
-            this.buttonBuildSolution.Visible = false;
-            this.buttonBuildSolution.Click += new System.EventHandler(this.buttonBuildSolution_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -255,81 +200,11 @@ namespace WindowsFormsApp1
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.flowLayoutPanel2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(280, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(798, 54);
+            this.panel3.Size = new System.Drawing.Size(798, 23);
             this.panel3.TabIndex = 0;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.linkExit);
-            this.flowLayoutPanel2.Controls.Add(this.labelName);
-            this.flowLayoutPanel2.Controls.Add(this.pictureBox1);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(606, 0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(192, 54);
-            this.flowLayoutPanel2.TabIndex = 0;
-            this.flowLayoutPanel2.WrapContents = false;
-            // 
-            // linkExit
-            // 
-            this.linkExit.AutoSize = true;
-            this.linkExit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.linkExit.LinkColor = System.Drawing.Color.Black;
-            this.linkExit.Location = new System.Drawing.Point(125, 0);
-            this.linkExit.Name = "linkExit";
-            this.linkExit.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.linkExit.Size = new System.Drawing.Size(64, 34);
-            this.linkExit.TabIndex = 1;
-            this.linkExit.TabStop = true;
-            this.linkExit.Text = "Выйти";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelName.Location = new System.Drawing.Point(55, 0);
-            this.labelName.Name = "labelName";
-            this.labelName.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.labelName.Size = new System.Drawing.Size(64, 34);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "ФИО |";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.free_icon_user_7323280;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 50);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.LightGray;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 500);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(280, 100);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Export";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Form1
             // 
@@ -337,20 +212,12 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 613);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -364,17 +231,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private Label labelName;
-        private LinkLabel linkExit;
-        private Panel panel5;
-        private PictureBox pictureBox1;
-        private Button button5;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button buttonBuildSolution;
         private Label label1;
         private Button button6;
+        private Panel panel3;
     }
 }
 

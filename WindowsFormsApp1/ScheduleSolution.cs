@@ -12,7 +12,7 @@ namespace WindowsFormsApp1
         public Dictionary<int, int> Projiects { get; set; } = new Dictionary<int, int>();
         public Dictionary<int, Resource> Resources { get; set; } = new Dictionary<int, Resource>();
         public double TotalTime { get; set; }
-        public double TotalCost { get; set; }
+        public double TotalCost => Operations.Values.Sum(op => op.Delta * op.Acceleration + op.NormalCost);
         public List<List<int>> CriticalWays = new List<List<int>>();
         public Dictionary<int, int> CounterOfOperations { get; set; } = new Dictionary<int, int>();
         public Dictionary<int, List<int>> ResourceSequences { get; set; } = new Dictionary<int, List<int>>();

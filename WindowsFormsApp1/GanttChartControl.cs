@@ -20,7 +20,16 @@ namespace WindowsFormsApp1
                 dataGridView1.ClearSelection();
             };
             //dataGridView1.CellPainting += dataGridView1_CellPainting;
-            LoadGanttChart();   
+            LoadGanttChart();
+            LoadReport();
+        }
+        public void LoadReport()
+        {
+            Report report = new Report(DataStorage.Solution);
+            label3.Text = $"Общее время выполнения проектов: {report.TotalTime:F0} дней";
+            label5.Text = $"Затраты на выполнение проектов: {report.TotalCost:F0}";
+            label6.Text = $"Загруженность исполнителей: {report.GetExecutorLoad():F2}";
+            label7.Text = $"Непрерывность проектов: {report.GetProjectContinuity():F2}";
         }
         public void LoadGanttChart()
         {

@@ -16,7 +16,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             LoadProjects();
-            label1.Image = ImageHelper.MakeGrayscale(label1.Image);
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
 
         }
@@ -86,5 +85,21 @@ namespace WindowsFormsApp1
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Excel Files|*.xlsx;*.xls";
+                openFileDialog.Title = "Выберите файл Excel";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    ExcelImporter.LoadOperationsFromExcel(filePath);
+                    MessageBox.Show($"Выбран файл: {filePath}");
+                    LoadProjects();
+                }
+            }
+        }
     }
 }
