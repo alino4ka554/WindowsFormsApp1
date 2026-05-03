@@ -99,15 +99,12 @@ namespace WindowsFormsApp1
                         string filePath = openFileDialog.FileName;
 
                         ExcelImporter.LoadOperationsFromExcel(filePath);
-
-                        // 🔥 сообщение об успешном импорте
                         MessageBox.Show(
                             "Файл успешно импортирован!",
                             "Готово",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
-
                         LoadProjects();
                     }
                     catch (Exception ex)

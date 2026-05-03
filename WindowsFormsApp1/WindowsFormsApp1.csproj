@@ -117,6 +117,12 @@
     <Compile Include="GanttChartControl.Designer.cs">
       <DependentUpon>GanttChartControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpForm.Designer.cs">
+      <DependentUpon>HelpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operation.cs" />
     <Compile Include="OperationAdd.cs">
       <SubType>Form</SubType>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GanttChartControl.resx">
       <DependentUpon>GanttChartControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperationAdd.resx">
       <DependentUpon>OperationAdd.cs</DependentUpon>

@@ -95,21 +95,38 @@ namespace WindowsFormsApp1
             ScheduleControl schedules = new ScheduleControl();
             OpenPage(schedules);
         }
-        private async void buttonBuildSolution_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-            BuildScheduleForm form = new BuildScheduleForm();
-            form.ShowDialog();
-            if(CurrentControl is ScheduleControl sch)
+            ExcelExporter.ExportToExcel(DataStorage.Solution, "schedule.xlsx");
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            ProjectAdd projectAdd = new ProjectAdd();
+            projectAdd.ShowDialog();
+            if (DataStorage.Projects.Count > 0)
             {
-                OpenPage(new ScheduleControl());
-            }
-            else if(CurrentControl is GanttChartControl g)
-            {
-                OpenPage(new GanttChartControl());
+                OpenPage(new ProjectsControl()); 
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            ExecutorAdd executorAdd = new ExecutorAdd();
+            executorAdd.ShowDialog();
+            if (DataStorage.Executors.Count > 0)
+            {
+                OpenPage(new ExecutorsControl());
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -118,30 +135,31 @@ namespace WindowsFormsApp1
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
-                    ExcelImporter.LoadOperationsFromExcel(filePath);
-                    MessageBox.Show($"Выбран файл: {filePath}");
-                    switch(CurrentControl)
+                    try
                     {
-                        case ProjectsControl _:
-                            OpenPage(new ProjectsControl());
-                            break;
-                        case ExecutorsControl _:
-                            OpenPage(new ExecutorsControl());
-                            break;
-                        case ScheduleControl _:
-                            OpenPage(new ScheduleControl());
-                            break;
-                        default:
-                            break;
+                        string filePath = openFileDialog.FileName;
+
+                        ExcelImporter.LoadOperationsFromExcel(filePath);
+                        MessageBox.Show(
+                            "Файл успешно импортирован!",
+                            "Готово",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                        OpenPage(new ProjectsControl());
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Ошибка при импорте:\n" + ex.Message,
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
                     }
                 }
             }
-        }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            ExcelExporter.ExportToExcel(DataStorage.Solution, "schedule.xlsx");
         }
     }
     public static class ImageHelper
