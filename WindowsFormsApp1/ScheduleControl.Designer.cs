@@ -80,7 +80,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.Location = new System.Drawing.Point(782, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(46, 325);
+            this.panel3.Size = new System.Drawing.Size(46, 405);
             this.panel3.TabIndex = 6;
             // 
             // panel2
@@ -89,7 +89,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(46, 325);
+            this.panel2.Size = new System.Drawing.Size(46, 405);
             this.panel2.TabIndex = 7;
             // 
             // dataGridView1
@@ -133,7 +133,7 @@
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(736, 342);
             this.dataGridView1.TabIndex = 9;
             // 
             // Id
@@ -222,7 +222,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(46, 63);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(736, 262);
+            this.panel5.Size = new System.Drawing.Size(736, 342);
             this.panel5.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -241,7 +241,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(736, 262);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(736, 342);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // label4
@@ -249,7 +249,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(3, 169);
+            this.label4.Location = new System.Drawing.Point(3, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(730, 47);
             this.label4.TabIndex = 3;
@@ -262,7 +262,7 @@
             this.label1.Enabled = false;
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Image = global::WindowsFormsApp1.Properties.Resources.free_icon_schedule_6826122;
-            this.label1.Location = new System.Drawing.Point(3, 46);
+            this.label1.Location = new System.Drawing.Point(3, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(730, 80);
             this.label1.TabIndex = 0;
@@ -273,7 +273,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(3, 126);
+            this.label2.Location = new System.Drawing.Point(3, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(730, 43);
             this.label2.TabIndex = 1;
@@ -289,7 +289,7 @@
             this.buttonBuildSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuildSolution.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonBuildSolution.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonBuildSolution.Location = new System.Drawing.Point(261, 24);
+            this.buttonBuildSolution.Location = new System.Drawing.Point(215, 24);
             this.buttonBuildSolution.Name = "buttonBuildSolution";
             this.buttonBuildSolution.Size = new System.Drawing.Size(305, 45);
             this.buttonBuildSolution.TabIndex = 3;
@@ -305,11 +305,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel2.Controls.Add(this.buttonBuildSolution, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 325);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(46, 311);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(828, 80);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(736, 94);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // ScheduleControl
@@ -317,7 +317,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);

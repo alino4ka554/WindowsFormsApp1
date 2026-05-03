@@ -94,10 +94,31 @@ namespace WindowsFormsApp1
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string filePath = openFileDialog.FileName;
-                    ExcelImporter.LoadOperationsFromExcel(filePath);
-                    MessageBox.Show($"Выбран файл: {filePath}");
-                    LoadProjects();
+                    try
+                    {
+                        string filePath = openFileDialog.FileName;
+
+                        ExcelImporter.LoadOperationsFromExcel(filePath);
+
+                        // 🔥 сообщение об успешном импорте
+                        MessageBox.Show(
+                            "Файл успешно импортирован!",
+                            "Готово",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+
+                        LoadProjects();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Ошибка при импорте:\n" + ex.Message,
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
                 }
             }
         }

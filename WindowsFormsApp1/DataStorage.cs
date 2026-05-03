@@ -13,5 +13,6 @@ namespace WindowsFormsApp1
         public static Dictionary<int, Resource> Executors = new Dictionary<int, Resource>();
         public static Dictionary<int, Operation> Operations = new Dictionary<int, Operation>();
         public static ScheduleSolution Solution;
+        public static DateTime dateTime;
     }
 }

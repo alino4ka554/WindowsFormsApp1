@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
                     beta: (double)numericUpDownBeta.Value, alpha: (int)numericUpDownAlpha.Value, 
                     rho: (double)numericUpDownRho.Value, tauMin: (double)numericUpDownMin.Value, 
                     tauMax: (double)numericUpDownMax.Value);
+                DataStorage.dateTime = dateTimePicker1.Value;
                 ProccessScheduleForm proccessScheduleForm = new ProccessScheduleForm(colony);
                 
                 proccessScheduleForm.ShowDialog();

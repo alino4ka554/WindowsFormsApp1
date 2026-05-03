@@ -47,6 +47,7 @@ namespace WindowsFormsApp1
                     var executorName = DataStorage.Executors[op.Resource].Name;
                     dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{op.StartTime}", $"{op.EndTime}", $"{projectName}", $"{executorName}");
                 }
+                buttonSpeedUp.Visible = true;
             }
             else
             {

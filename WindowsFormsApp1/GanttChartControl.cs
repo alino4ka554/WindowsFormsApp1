@@ -25,11 +25,22 @@ namespace WindowsFormsApp1
         }
         public void LoadReport()
         {
-            Report report = new Report(DataStorage.Solution);
-            label3.Text = $"Общее время выполнения проектов: {report.TotalTime:F0} дней";
-            label5.Text = $"Затраты на выполнение проектов: {report.TotalCost:F0}";
-            label6.Text = $"Загруженность исполнителей: {report.GetExecutorLoad():F2}";
-            label7.Text = $"Непрерывность проектов: {report.GetProjectContinuity():F2}";
+            if (DataStorage.Solution != null)
+            {
+                Report report = new Report(DataStorage.Solution);
+                label3.Text = $"Общее время выполнения проектов: {report.TotalTime:F0} дней";
+                label5.Text = $"Затраты на выполнение проектов: {report.TotalCost:F0}";
+                label6.Text = $"Загруженность исполнителей: {report.GetExecutorLoad():F2}";
+                label7.Text = $"Непрерывность проектов: {report.GetProjectContinuity():F2}";
+                buttonExportReport.Visible = true;
+            }
+            else
+            {
+                dataGridView1.Visible = false;
+                flowLayoutPanel1.Visible = false;
+                tableLayoutPanel2.Visible = false;
+                buttonExportReport.Visible = false;
+            }
         }
         public void LoadGanttChart()
         {
@@ -45,8 +56,8 @@ namespace WindowsFormsApp1
                 idColumn.HeaderText = "Id";
                 idColumn.Visible = false; // скрываем весь столбец
                 dataGridView1.Columns.Add(idColumn);
-                DateTime startTime = DateTime.Now;
-                DateTime endTime = DateTime.Now.AddDays(DataStorage.Solution.TotalTime);
+                DateTime startTime = DataStorage.dateTime;
+                DateTime endTime = startTime.AddDays(DataStorage.Solution.TotalTime);
                 for (DateTime date = startTime; date <= endTime; date = date.AddDays(1))
                 {
                     string day = date.Day < 10 ? $"0{date.Day}" : $"{date.Day}";
@@ -102,6 +113,41 @@ namespace WindowsFormsApp1
         {
             Random rnd = new Random(id); // фиксированный цвет для id
             return Color.FromArgb(rnd.Next(100, 255), rnd.Next(100, 255), rnd.Next(100, 255));
+        }
+
+        private void buttonExportReport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Title = "Сохранить отчет";
+                saveDialog.Filter = "Excel файл (*.xlsx)|*.xlsx";
+                saveDialog.FileName = "Расписание.xlsx";
+                saveDialog.DefaultExt = "xlsx";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        ExcelExporter.ExportToExcel(DataStorage.Solution, saveDialog.FileName);
+
+                        MessageBox.Show(
+                            "Отчет успешно сохранён!",
+                            "Готово",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            "Ошибка при сохранении:\n" + ex.Message,
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                }
+            }
         }
     }
 }

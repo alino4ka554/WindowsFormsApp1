@@ -32,28 +32,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAddProject = new System.Windows.Forms.Button();
+            this.buttonExportReport = new System.Windows.Forms.Button();
             this.labelHeader = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel5
@@ -70,7 +70,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
-            this.flowLayoutPanel2.Controls.Add(this.buttonAddProject);
+            this.flowLayoutPanel2.Controls.Add(this.buttonExportReport);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(402, 0);
@@ -80,21 +80,22 @@
             this.flowLayoutPanel2.TabIndex = 7;
             this.flowLayoutPanel2.WrapContents = false;
             // 
-            // buttonAddProject
+            // buttonExportReport
             // 
-            this.buttonAddProject.BackColor = System.Drawing.Color.Black;
-            this.buttonAddProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAddProject.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonAddProject.FlatAppearance.BorderSize = 0;
-            this.buttonAddProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddProject.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonAddProject.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonAddProject.Location = new System.Drawing.Point(103, 8);
-            this.buttonAddProject.Name = "buttonAddProject";
-            this.buttonAddProject.Size = new System.Drawing.Size(228, 45);
-            this.buttonAddProject.TabIndex = 3;
-            this.buttonAddProject.Text = "Экспорт отчета";
-            this.buttonAddProject.UseVisualStyleBackColor = false;
+            this.buttonExportReport.BackColor = System.Drawing.Color.Black;
+            this.buttonExportReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonExportReport.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExportReport.FlatAppearance.BorderSize = 0;
+            this.buttonExportReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportReport.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonExportReport.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonExportReport.Location = new System.Drawing.Point(103, 8);
+            this.buttonExportReport.Name = "buttonExportReport";
+            this.buttonExportReport.Size = new System.Drawing.Size(228, 45);
+            this.buttonExportReport.TabIndex = 3;
+            this.buttonExportReport.Text = "Экспорт отчета";
+            this.buttonExportReport.UseVisualStyleBackColor = false;
+            this.buttonExportReport.Click += new System.EventHandler(this.buttonExportReport_Click);
             // 
             // labelHeader
             // 
@@ -162,6 +163,65 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(736, 69);
             this.flowLayoutPanel1.TabIndex = 16;
             this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.label7, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(736, 80);
+            this.tableLayoutPanel2.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(371, 40);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 24);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "label7";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(371, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 24);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "label6";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(3, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 24);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "label5";
             // 
             // tableLayoutPanel1
             // 
@@ -236,65 +296,6 @@
             this.panel3.Size = new System.Drawing.Size(46, 405);
             this.panel3.TabIndex = 11;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 24);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "label5";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.label7, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(736, 80);
-            this.tableLayoutPanel2.TabIndex = 18;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(371, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 24);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "label6";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(371, 40);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 24);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "label7";
-            // 
             // GanttChartControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -310,9 +311,9 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,7 +323,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label labelHeader;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button buttonAddProject;
+        private System.Windows.Forms.Button buttonExportReport;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
