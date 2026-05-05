@@ -18,7 +18,18 @@ namespace WindowsFormsApp1
         public double TotalTime => solution.TotalTime;
 
         public double TotalCost => solution.TotalCost;
+        private double CalculateLoad(IEnumerable<Operation> operations)
+        {
+            if (!operations.Any())
+                return 0;
 
+            double busyTime = operations.Sum(o => o.ActualTime);
+            double startTime = operations.Min(o => o.StartTime);
+            double endTime = operations.Max(o => o.EndTime);
+            double totalTime = endTime - startTime;
+
+            return totalTime == 0 ? 0 : totalTime < busyTime ? 1 : busyTime / totalTime;
+        }
         public double GetExecutorLoad()
         {
             double result = 0;
@@ -27,13 +38,7 @@ namespace WindowsFormsApp1
             {
                 var operations = solution.Operations.Values
                     .Where(o => o.Resource == exec);
-
-                double busyTime = operations.Sum(o => o.ActualTime);
-                double startTime = operations.Min(o => o.StartTime);
-                double endTime = operations.Max(o => o.EndTime);
-                double totalTime = endTime - startTime;
-
-                result += totalTime == 0 ? 0 : busyTime / totalTime;
+                result += CalculateLoad(operations);
             }
 
             return result / DataStorage.Executors.Count;
@@ -47,13 +52,7 @@ namespace WindowsFormsApp1
             {
                 var operations = solution.Operations.Values
                    .Where(o => o.Project == project);
-
-                double busyTime = operations.Sum(o => o.ActualTime);
-                double startTime = operations.Min(o => o.StartTime);
-                double endTime = operations.Max(o => o.EndTime);
-                double totalTime = endTime - startTime;
-
-                result += totalTime < busyTime ? 1 : totalTime == 0 ? 0 : busyTime / totalTime;
+                result += CalculateLoad(operations);
             }
 
             return result / DataStorage.Projects.Count;

@@ -75,9 +75,7 @@ namespace WindowsFormsApp1
                     {
                         int projectId = (int)row.Cells[0].Value;
                         var project = DataStorage.Projects[projectId];
-                        foreach (var op in project.Operations)
-                        DataStorage.Operations.Remove(op.Id);
-                        DataStorage.Projects.Remove(projectId);
+                        DataManager.Instance.DeleteProject(project);
                         LoadProjects();
                     }
                 }

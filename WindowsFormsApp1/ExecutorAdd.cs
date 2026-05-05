@@ -21,8 +21,8 @@ namespace WindowsFormsApp1
         {
             if (Validation())
             {
-                var executor = new Resource(DataStorage.Executors.Count + 1, textBoxName.Text);
-                DataStorage.Executors.Add(executor.Id, executor);
+                var executor = new Resource(DataManager.Instance.GetNextExecutorId(), textBoxName.Text);
+                DataManager.Instance.AddExecutor(executor);
                 this.Close();
             }
         }

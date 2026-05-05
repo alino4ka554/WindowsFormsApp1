@@ -46,7 +46,9 @@
       <HintPath>..\packages\Microsoft.IO.RecyclableMemoryStream.3.0.1\lib\netstandard2.0\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -90,6 +92,7 @@
       <DependentUpon>BuildScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CPM.cs" />
+    <Compile Include="DataManager.cs" />
     <Compile Include="DataStorage.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="ExcelImporter.cs" />

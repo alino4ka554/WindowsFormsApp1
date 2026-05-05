@@ -21,8 +21,8 @@ namespace WindowsFormsApp1
         {
             if (Validation())
             {
-                var project = new Project(DataStorage.Projects.Count + 1, new List<Operation>(), textBoxName.Text);
-                DataStorage.Projects.Add(project.Id, project);
+                var project = new Project(DataManager.Instance.GetNextProjectId(), new List<Operation>(), textBoxName.Text);
+                DataManager.Instance.AddProject(project);
                 this.Close();
             }
         }

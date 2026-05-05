@@ -25,8 +25,6 @@ namespace WindowsFormsApp1
             {
                 W.Add((phe), 0);
             }
-            foreach (var op in Operations)
-                CounterOfOperations.Add(op.Key, 0);
             InitializeResource();
             //InitializeW();
         }
@@ -168,18 +166,6 @@ namespace WindowsFormsApp1
                     }
                 }
             }
-        }
-        public void ConstraintForOneResource(int i, int j)
-        {
-            int w = W[(i, j)];
-            double T_i = Operations[i].StartTime;
-            double T_j = Operations[j].StartTime;
-            double t_i = Operations[i].NormalTime;
-            double t_j = Operations[j].NormalTime;
-            if (T_j - T_i - 999 * w <= -t_i && T_i - T_j + 999 * w <= 999 - t_j)
-                return;
-            else
-                W[(i, j)] = (w == 0) ? 1 : 0;
         }
 
     }

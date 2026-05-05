@@ -67,8 +67,8 @@ namespace WindowsFormsApp1
                     if (row.Cells[0].Value != null)
                     {
                         int operationId = (int)row.Cells[0].Value;
-                        DataStorage.Operations.Remove(operationId);
-                        DataStorage.Projects[ProjectId].Operations.RemoveAll(op => op.Id == operationId);
+                        var operation = DataStorage.Operations[operationId];
+                        DataManager.Instance.DeleteOperation(operation);
                         LoadOperations();
                     }
                 }

@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
                     .ToList();
                 Operation operation = new Operation
                 {
-                    Id = DataStorage.Operations.Count + 1,
+                    Id = DataManager.Instance.GetNextOperationId(),
                     Name = textBoxName.Text,
                     NormalTime = sliderTime.UpperValue,
                     CrashTime = sliderTime.LowerValue,
@@ -90,8 +90,7 @@ namespace WindowsFormsApp1
                     Resource = (int)comboBoxExecutors.SelectedValue,
                     DependsOn = preds
                 };
-                DataStorage.Projects[ProjectId].Operations.Add(operation);
-                DataStorage.Operations.Add(operation.Id, operation);
+                DataManager.Instance.AddOperation(operation);
                 this.Close();
             }
         }

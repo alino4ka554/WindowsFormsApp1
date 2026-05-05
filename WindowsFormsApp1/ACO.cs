@@ -42,13 +42,14 @@ namespace WindowsFormsApp1
             _tauMax = tauMax;
             //_Q = CalculateQ(operations);
             _Q = 1;
+            InitializeData(ants);
+        }
+        private void InitializeData(int ants)
+        {
             OpsToProjects();
             OpsToResources();
             InitPheromones();
-            //OrderingOneResInOneProj();
-            //ConvertToGraph();
             InitAnts(ants);
-            //CalculateBeginTime(operations);
         }
         public void InitAnts(int count)
         {
@@ -65,15 +66,15 @@ namespace WindowsFormsApp1
             {
                 foreach (var j in _operations.Values)
                 {
-
-                    if ((i != j) && i.Resource == j.Resource)
-                    //if(i != j)
-                    {
-                        _localPheromones.Add((i.Id, j.Id), 0);
-                        _pheromones.Add((i.Id, j.Id), _tauMax);
-                    }
+                    if (!CanCreateEdge(i, j)) continue;
+                    _localPheromones[(i.Id, j.Id)] = 0;
+                    _pheromones[(i.Id, j.Id)] = _tauMax;
                 }
             }
+        }
+        private bool CanCreateEdge(Operation i, Operation j)
+        {
+            return i != j && i.Resource == j.Resource;
         }
         //private void InitAnts(int ants)
         //{
@@ -96,12 +97,29 @@ namespace WindowsFormsApp1
         {
             foreach (var op in _operations.Values)
             {
-                if (!_resourcesOperations.ContainsKey(op.Resource))
-                    _resourcesOperations.Add(op.Resource, new List<int>());
-                _resourcesOperations[op.Resource].Add(op.Id);
-                if (!_resourceFree.ContainsKey(op.Resource))
-                    _resourceFree.Add(op.Resource, 0);
+                AddOperationToResource(op);
             }
+        }
+        private void AddOperationToResource(Operation op)
+        {
+            if (!_resourcesOperations.ContainsKey(op.Resource))
+                _resourcesOperations[op.Resource] = new List<int>();
+
+            _resourcesOperations[op.Resource].Add(op.Id);
+
+            if (!_resourceFree.ContainsKey(op.Resource))
+                _resourceFree[op.Resource] = 0;
+        }
+        private int SelectNextResource(int currentRes, List<int> visitedRes)
+        {
+            var nextRes = currentRes;
+            while (visitedRes.Contains(nextRes))
+            {
+                if (visitedRes.Count == _resourcesOperations.Count)
+                    break;
+                nextRes = (int)(GetRandomChoice() * _resourcesOperations.Count);
+            }
+            return nextRes;
         }
         public ScheduleSolution RecursiveBuild(int firstResource)
         {
@@ -125,14 +143,7 @@ namespace WindowsFormsApp1
                     prevOp = currentOp;
                 }
                 visitedRes.Add(currentRes);
-                var nextRes = currentRes;
-                while (visitedRes.Contains(nextRes))
-                {
-                    if (visitedRes.Count == _resourcesOperations.Count)
-                        break;
-                    nextRes = (int)(GetRandomChoice() * _resourcesOperations.Count);
-                }
-                currentRes = nextRes;
+                currentRes = SelectNextResource(currentRes, visitedRes);
 
             }
             return solution;
@@ -206,42 +217,28 @@ namespace WindowsFormsApp1
         public void Run(IProgress<int> progress)
         {
             CalculateFirstStartTimes();
-
             for (int i = 0; i < _iterations; i++)
             {
-                foreach (var ant in _ants)
-                {
-                    var solution = RecursiveBuild(ant.Value);
-                    if (solution != null)
-                    {
-                        CalculateEndTime(solution);
-                        UpdateBest(solution);
-                        LocalUpdatePheromones(solution);
-                        //Console.WriteLine($"Решение {ant.Key} муравья: лучшее время = {solution.TotalTime}");
-                    }
-                    else continue;
-                }
+                RunIteration();
                 progress.Report(i);
                 GlobalUpdatePheromones();
-
                 Console.WriteLine($"Итерация {i}: лучшее время = {BestSolution.TotalTime}");
             }
         }
-        public void CalculateEndTime(ScheduleSolution scheduleSolution)
+        private void RunIteration()
         {
-            var operations = scheduleSolution.Operations;
-            var projectMaxEndTime = 0.0;
-            foreach (var project in _projectsOperations)
+            foreach (var ant in _ants)
             {
-
-                foreach (var op in project.Value)
-                {
-                    var end = operations[op].StartTime + operations[op].ActualTime;
-                    if (projectMaxEndTime < end)
-                        projectMaxEndTime = end;
-                }
+                ProcessAnt(ant);
             }
-            scheduleSolution.TotalTime = projectMaxEndTime;
+        }
+        private void ProcessAnt(KeyValuePair<int, int> ant)
+        {
+            var solution = RecursiveBuild(ant.Value);
+            if (solution == null) return;
+            solution.CalculateEndTime();
+            UpdateBest(solution);
+            LocalUpdatePheromones(solution);
         }
         public void CalculateFirstStartTimes()
         {
@@ -270,31 +267,40 @@ namespace WindowsFormsApp1
         private void UpdateBest(ScheduleSolution solution)
         {
             if (BestSolution == null || solution.TotalTime < BestSolution.TotalTime)
-            {
                 BestSolution = solution;
-            }
         }
         public void GlobalUpdatePheromones()
+        {
+            EvaporatePheromones();
+            ReinforceBestSolution();
+            ResetLocalPheromones();
+        }
+        private void EvaporatePheromones()
         {
             foreach (var key in _pheromones.Keys.ToList())
             {
                 _pheromones[key] *= (1 - _rho);
+
                 if (_pheromones[key] < _tauMin)
                     _pheromones[key] = _tauMin;
             }
+        }
+        private void ReinforceBestSolution()
+        {
             foreach (var ops in BestSolution.W.Keys)
             {
-                if (BestSolution.W[ops] == 1)
-                {
-                    _pheromones[ops] += _localPheromones[ops];
-                    if (_pheromones[ops] > _tauMax)
-                        _pheromones[ops] = _tauMax;
-                }
+                if (BestSolution.W[ops] != 1) continue;
+
+                _pheromones[ops] += _localPheromones[ops];
+
+                if (_pheromones[ops] > _tauMax)
+                    _pheromones[ops] = _tauMax;
             }
-            foreach (var local in _localPheromones.Keys.ToList())
-            {
-                _localPheromones[local] = 0;
-            }
+        }
+        private void ResetLocalPheromones()
+        {
+            foreach (var key in _localPheromones.Keys.ToList())
+                _localPheromones[key] = 0;
         }
         public void LocalUpdatePheromones(ScheduleSolution solution)
         {

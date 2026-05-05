@@ -53,16 +53,8 @@ namespace WindowsFormsApp1
                     if (row.Cells[0].Value != null)
                     {
                         int executorId = (int)row.Cells[0].Value;
-                        var opsToDelete = DataStorage.Operations.Values
-                            .Where(op => op.Resource == executorId)
-                            .ToList();
-                        foreach (var op in opsToDelete)
-                        {
-                            if (DataStorage.Projects.ContainsKey(op.Project))
-                                DataStorage.Projects[op.Project].Operations.RemoveAll(o => o.Id == op.Id);
-                            DataStorage.Operations.Remove(op.Id);
-                        }
-                        DataStorage.Executors.Remove(executorId);
+                        var executor = DataStorage.Executors[executorId];
+                        DataManager.Instance.DeleteExecutor(executor);
                         LoadExecutors();
                     }
                 }

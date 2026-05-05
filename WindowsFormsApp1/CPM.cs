@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
         public ScheduleSolution Solution;
         public double Td;
         public double E;
+        private HashSet<int> _blockedOperations = new HashSet<int>();
 
         public CPM(ScheduleSolution solution, double e)
         {
@@ -18,46 +19,73 @@ namespace WindowsFormsApp1
             E = e;
             Td = Solution.TotalTime - E;
         }
-
-        public void Run()
+        private void Initialize()
         {
             Solution.InitializeDependsForResource();
             Solution.FindCriticalWay();
-            List<int> opsCannotBeAcceleratated = new List<int>();
-            while (Solution.CriticalWays.Count != 0)
+        }
+        private bool HasCriticalPath()
+        {
+            return Solution.CriticalWays.Count != 0;
+        }
+        private int SelectOperationForAcceleration()
+        {
+            double min = double.MaxValue;
+            int minOpId = -1;
+
+            foreach (var op in Solution.Operations.Values)
             {
-                if (Solution.TotalTime <= Td)
-                    Td = Solution.TotalTime - E;
-                double min = double.MaxValue;
-                int minOpId = -1;
-                //if (Solution.CriticalWays.Count > 1)
+                if (!_blockedOperations.Contains(op.Id))
                 {
-                    foreach (var op in Solution.Operations.Values)
+                    int k = Solution.CriticalWays.Sum(cw => cw.Count(id => id == op.Id));
+                    if (k == 0) continue;
+                    double value = op.Delta / k;
+                    if (value < min)
                     {
-                        int k = Solution.CriticalWays.Sum(cw => cw.Count(opId => opId == op.Id));
-                        if (min > op.Delta / k && !opsCannotBeAcceleratated.Contains(op.Id))
-                        {
-                            min = op.Delta / k;
-                            minOpId = op.Id;
-                        }
+                        min = value;
+                        minOpId = op.Id;
                     }
                 }
-                //else
-                //  minOpId = Solution.CriticalWays[0].OrderBy(opId => Solution.Operations[opId].Delta).First();
-                if (minOpId == -1)
-                {
-                    Solution.CriticalWays = new List<List<int>>();
+            }
+
+            return minOpId;
+        }
+        private bool TryAccelerate(int opId)
+        {
+            var op = Solution.Operations[opId];
+            double deltaT = Solution.TotalTime - Td;
+
+            if (op.Acceleration + deltaT <= op.NormalTime - op.CrashTime)
+            {
+                op.Acceleration += deltaT;
+                Solution.RecalculateFrom(opId);
+                return true;
+            }
+            return false;
+        }
+        private void Recalculate()
+        {
+            Solution.CriticalWays.Clear();
+            Solution.FindCriticalWay();
+        }
+        private void UpdateDeadline()
+        {
+            if (Solution.TotalTime <= Td)
+                Td = Solution.TotalTime - E;
+        }
+        public void Run()
+        {
+            Initialize();
+            List<int> opsCannotBeAcceleratated = new List<int>();
+            while (HasCriticalPath())
+            {
+                UpdateDeadline();
+                int opId = SelectOperationForAcceleration();
+                if (opId == -1)
                     break;
-                }
-                if (Solution.Operations[minOpId].Acceleration + (Solution.TotalTime - Td) <= Solution.Operations[minOpId].NormalTime - Solution.Operations[minOpId].CrashTime)
-                {
-                    Solution.Operations[minOpId].Acceleration += (Solution.TotalTime - Td);
-                    Solution.RecalculateFrom(minOpId);
-                }
-                else
-                    opsCannotBeAcceleratated.Add(minOpId);
-                Solution.CriticalWays = new List<List<int>>();
-                Solution.FindCriticalWay();
+                if (!TryAccelerate(opId))
+                    _blockedOperations.Add(opId);
+                Recalculate();
             }
         }
     }

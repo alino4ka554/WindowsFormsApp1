@@ -9,9 +9,8 @@ namespace WindowsFormsApp1
 {
     public static class ExcelImporter
     {
-        public static List<Operation> LoadOperationsFromExcel(string path)
+        public static void LoadOperationsFromExcel(string path)
         {
-            var operations = new List<Operation>();
             Workbook wb = new Workbook(path);
             WorksheetCollection collection = wb.Worksheets;
             for (int worksheetIndex = 7; worksheetIndex < 8; worksheetIndex++)
@@ -28,10 +27,10 @@ namespace WindowsFormsApp1
                     if (!string.IsNullOrEmpty(cellValue) && cellValue != "-")
                     {
                         preds = cellValue
-                            .Split(',')                        // разделяем по запятой
-                            .Select(x => x.Trim())             // убираем пробелы
-                            .Where(x => int.TryParse(x, out _))// оставляем только корректные числа
-                            .Select(int.Parse)                 // переводим в int
+                            .Split(',')                        
+                            .Select(x => x.Trim())             
+                            .Where(x => int.TryParse(x, out _))
+                            .Select(int.Parse)                 
                             .ToList();
                     }
                     cellValue = worksheet.Cells[i, 3].Value?.ToString();
@@ -44,22 +43,22 @@ namespace WindowsFormsApp1
                         : cellValue;
                     if (!ExecutorsByName.ContainsKey(resName))
                     {
-                        int idRes = DataStorage.Executors.Count() + 1;
+                        int idRes = DataManager.Instance.GetNextExecutorId();
                         var newRes = new Resource(idRes, resName);
-                        DataStorage.Executors[idRes] = newRes;
+                        DataManager.Instance.AddExecutor(newRes);
                         ExecutorsByName.Add(resName, newRes);
                     }
                     if (!ProjectsByName.ContainsKey(projName))
                     {
-                        int idProj = DataStorage.Projects.Count() + 1;
+                        int idProj = DataManager.Instance.GetNextProjectId();
                         var newProj = new Project(idProj, new List<Operation>(), projName);
-                        DataStorage.Projects[idProj] = newProj;
+                        DataManager.Instance.AddProject(newProj);
                         ProjectsByName.Add(projName, newProj);
                     }
                     cellValue = worksheet.Cells[i, 0].Value?.ToString();
                     var op = new Operation
                     {
-                        Id = DataStorage.Operations.Count() + 1,
+                        Id = DataManager.Instance.GetNextOperationId(),
                         Name = int.TryParse(cellValue, out var opVal) ? $"Задача {opVal}" : cellValue,
                         DependsOn = preds,
                         Resource = ExecutorsByName[resName].Id,
@@ -70,13 +69,9 @@ namespace WindowsFormsApp1
                         CrashCost = double.TryParse(worksheet.Cells[i, 7].Value?.ToString(), out var ccVal) ? ccVal : 0,
 
                     };
-
-                    operations.Add(op);
-                    DataStorage.Operations[op.Id] = op;
-                    DataStorage.Projects[op.Project].Operations.Add(op);
+                    DataManager.Instance.AddOperation(op);
                 }
             }
-            return operations;
         }
 
     }

@@ -100,11 +100,6 @@ namespace WindowsFormsApp1
             ExcelExporter.ExportToExcel(DataStorage.Solution, "schedule.xlsx");
         }
 
-        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HelpForm helpForm = new HelpForm();
-            helpForm.ShowDialog();
-        }
 
         private void button6_Click_1(object sender, EventArgs e)
         {
@@ -160,6 +155,12 @@ namespace WindowsFormsApp1
                 }
             }
 
+        }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpForm helpForm = new HelpForm();
+            helpForm.ShowDialog();
         }
     }
     public static class ImageHelper
