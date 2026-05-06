@@ -12,11 +12,13 @@ namespace WindowsFormsApp1
 {
     public partial class ProccessScheduleForm : Form
     {
-        ACO antColony;
-        public ProccessScheduleForm(ACO colony)
+        private readonly ScheduleService _service;
+        private readonly ScheduleBuildParams _params;
+        public ProccessScheduleForm(ScheduleService service, ScheduleBuildParams parameters)
         {
             InitializeComponent();
-            antColony = colony;
+            _service = service;
+            _params = parameters;
         }
         private async void ProccessScheduleForm_Load(object sender, EventArgs e)
         {
@@ -26,7 +28,7 @@ namespace WindowsFormsApp1
         public async Task BuildSchedule()
         {
             progressBar1.Value = 0;
-            progressBar1.Maximum = antColony._iterations;
+            progressBar1.Maximum = _params.Iterations;
             progressBar1.Visible = true;
 
             var progress = new Progress<int>(value =>
@@ -36,7 +38,7 @@ namespace WindowsFormsApp1
 
             await Task.Run(() =>
             {
-                antColony.Run(progress);
+                _service.BuildSchedule(_params, progress);
             });
 
             progressBar1.Visible = false;

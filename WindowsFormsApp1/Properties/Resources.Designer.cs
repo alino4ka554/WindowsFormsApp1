@@ -63,6 +63,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _501ant_100436__1_ {
+            get {
+                object obj = ResourceManager.GetObject("501ant_100436 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap free_icon_back_left_arrow_circular_button_outline_54623 {
             get {
                 object obj = ResourceManager.GetObject("free-icon-back-left-arrow-circular-button-outline-54623", resourceCulture);

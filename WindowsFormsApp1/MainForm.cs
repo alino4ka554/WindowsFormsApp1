@@ -14,11 +14,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         public Panel MainPanel => panel2;
         private UserControl CurrentControl;
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -161,6 +161,12 @@ namespace WindowsFormsApp1
         {
             HelpForm helpForm = new HelpForm();
             helpForm.ShowDialog();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
     }
     public static class ImageHelper

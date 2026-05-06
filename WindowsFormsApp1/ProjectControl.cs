@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
                 foreach (var op in ops)
                 {
                     var executorName = DataStorage.Executors[op.Resource].Name;
-                    dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{executorName}", $"{op.NormalTime} - {op.CrashTime}", $"{op.NormalCost} - {op.CrashCost}");
+                    dataGridView1.Rows.Add(op.Id, $"{op.Name}", $"{executorName}", $"{op.CrashTime} - {op.NormalTime}", $"{op.NormalCost} - {op.CrashCost}");
                 }
                 dataGridView1.ClearSelection();
             }
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
         private void buttonBack_Click(object sender, EventArgs e)
         {
             ProjectsControl projectsControl = new ProjectsControl();
-            Form1 form = Application.OpenForms["Form1"] as Form1;
+            MainForm form = Application.OpenForms["Form1"] as MainForm;
             form?.ShowSideMenu();
             form.OpenPage(projectsControl);
         }

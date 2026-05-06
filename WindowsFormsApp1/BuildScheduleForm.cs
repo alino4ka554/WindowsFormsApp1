@@ -13,9 +13,11 @@ namespace WindowsFormsApp1
 {
     public partial class BuildScheduleForm : Form
     {
-        public BuildScheduleForm()
+        private readonly ScheduleService _service;
+        public BuildScheduleForm(ScheduleService service)
         {
             InitializeComponent();
+            _service = service;
             this.numericUpDownAnts.Value = DataStorage.Operations.Count();
             this.dateTimePicker1.MinDate = DateTime.Now;
         }
@@ -29,17 +31,20 @@ namespace WindowsFormsApp1
         {
             if (Validation())
             {
-                var operations = DataStorage.Operations;
-                var colony = new ACO(operations, iterations: (int)numericUpDownIterations.Value, 
-                    ants: (int)numericUpDownAnts.Value,
-                    beta: (double)numericUpDownBeta.Value, alpha: (int)numericUpDownAlpha.Value, 
-                    rho: (double)numericUpDownRho.Value, tauMin: (double)numericUpDownMin.Value, 
-                    tauMax: (double)numericUpDownMax.Value);
+                var parameters = new ScheduleBuildParams
+                {
+                    Iterations = (int)numericUpDownIterations.Value,
+                    Ants = (int)numericUpDownAnts.Value,
+                    Beta = (double)numericUpDownBeta.Value,
+                    Alpha = (double)numericUpDownAlpha.Value,
+                    Rho = (double)numericUpDownRho.Value,
+                    TauMin = (double)numericUpDownMin.Value,
+                    TauMax = (double)numericUpDownMax.Value
+                };
                 DataStorage.dateTime = dateTimePicker1.Value;
-                ProccessScheduleForm proccessScheduleForm = new ProccessScheduleForm(colony);
+                ProccessScheduleForm proccessScheduleForm = new ProccessScheduleForm(_service, parameters);
                 
                 proccessScheduleForm.ShowDialog();
-                DataStorage.Solution = colony.BestSolution;
                 this.Close();
             }
         }

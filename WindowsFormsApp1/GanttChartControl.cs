@@ -30,8 +30,8 @@ namespace WindowsFormsApp1
                 Report report = new Report(DataStorage.Solution);
                 label3.Text = $"Общее время выполнения проектов: {report.TotalTime:F0} дней";
                 label5.Text = $"Затраты на выполнение проектов: {report.TotalCost:F0}";
-                label6.Text = $"Загруженность исполнителей: {report.GetExecutorLoad():F2}";
-                label7.Text = $"Непрерывность проектов: {report.GetProjectContinuity():F2}";
+                label6.Text = $"Загруженность исполнителей: {report.GetExecutorLoad() * 100:F2}%";
+                label7.Text = $"Непрерывность проектов: {report.GetProjectContinuity() * 100:F2}%";
                 buttonExportReport.Visible = true;
             }
             else
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
                 DataGridViewTextBoxColumn idColumn = new DataGridViewTextBoxColumn();
                 idColumn.Name = "Id";
                 idColumn.HeaderText = "Id";
-                idColumn.Visible = false; // скрываем весь столбец
+                idColumn.Visible = false; 
                 dataGridView1.Columns.Add(idColumn);
                 DateTime startTime = DataStorage.dateTime;
                 DateTime endTime = startTime.AddDays(DataStorage.Solution.TotalTime);
@@ -69,7 +69,6 @@ namespace WindowsFormsApp1
                 foreach (var project in DataStorage.Projects)
                 {
                     int rowIndex = dataGridView1.Rows.Add(project.Value.Name);
-                    //dataGridView1.Rows[rowIndex].Height = 5;
                     dataGridView1.Rows[rowIndex].Cells[0].Style.Font =
                         new Font(dataGridView1.DefaultCellStyle.Font, FontStyle.Bold);
                     foreach (var op in project.Value.Operations)
@@ -77,7 +76,6 @@ namespace WindowsFormsApp1
                         var opId = op.Id;
                         var operation = DataStorage.Solution.Operations[opId];
                         dataGridView1.Rows.Add(DataStorage.Solution.Operations[opId].Name, opId);
-                        //dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[(int)operation.StartTime + 1].Style.BackColor = Color.Red;
                         for (int i = (int)operation.StartTime + 2; i <= (int)operation.EndTime + 1; i++)
                         {
                             var color = GetColorByExecutor(op.Resource);
@@ -103,7 +101,7 @@ namespace WindowsFormsApp1
                 lbl.BackColor = GetColorByExecutor(exec.Key);
                 lbl.Font = new Font("Calibri", 12);
                 lbl.ForeColor = Color.Black;
-                lbl.AutoSize = false;
+                lbl.AutoSize = true;
                 lbl.Size = new Size(120, 25);
                 lbl.Margin = new Padding(5);
                 flowLayoutPanel1.Controls.Add(lbl);

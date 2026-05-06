@@ -13,8 +13,12 @@ namespace WindowsFormsApp1
     public partial class OperationAdd : Form
     {
         public int ProjectId;
-        RangeTrackBar sliderTime = new RangeTrackBar();
-        RangeTrackBar sliderCost = new RangeTrackBar();
+        RangeTrackBar sliderTime = new RangeTrackBar(1, 100);
+        RangeTrackBar sliderCost = new RangeTrackBar(0, 100000);
+        NumericUpDown numericUpDownFromTime = new NumericUpDown {Width = 50 };
+        NumericUpDown numericUpDownToTime = new NumericUpDown { Width = 50 };
+        NumericUpDown numericUpDownFromCost = new NumericUpDown { Width = 50 };
+        NumericUpDown numericUpDownToCost = new NumericUpDown{ Width = 50 };
         public OperationAdd(int _projectId)
         {
             InitializeComponent();
@@ -27,19 +31,55 @@ namespace WindowsFormsApp1
             panel5.Controls.Add(sliderTime);
             panel6.Controls.Add(sliderCost);*/
             ProjectId = _projectId;
-            InitializeRangeTrackBar(sliderTime, label1, label2, panel5);
-            InitializeRangeTrackBar(sliderCost, label3, label4, panel6);
-            sliderTime.ValuesChanged += RangeTrackBar1_ValuesChanged;
-            sliderCost.ValuesChanged += RangeTrackBar2_ValuesChanged;
+           
+            InitializeRangeTrackBar(sliderTime, numericUpDownFromTime, numericUpDownToTime, panel5);
+            InitializeRangeTrackBar(sliderCost, numericUpDownFromCost, numericUpDownToCost, panel6);
             GetExecutors();
             GetPredecessors();
         }
-        public void InitializeRangeTrackBar(RangeTrackBar slider, Label labelFrom, Label labelTo, Panel panel)
+        public void InitializeRangeTrackBar(RangeTrackBar slider, NumericUpDown numFrom, NumericUpDown numTo, Panel panel)
         {
-            labelFrom.Text = slider.LowerValue.ToString();
-            labelTo.Text = slider.UpperValue.ToString();
+            numFrom.Minimum = slider.Minimum;
+            numFrom.Maximum = slider.Maximum;
+
+            numTo.Minimum = slider.Minimum;
+            numTo.Maximum = slider.Maximum;
+
+            numFrom.Value = slider.LowerValue;
+            numTo.Value = slider.UpperValue;
+
             slider.Dock = DockStyle.Fill;
+            numFrom.Dock = DockStyle.Left;
+            numTo.Dock = DockStyle.Right;
             panel.Controls.Add(slider);
+            panel.Controls.Add(numFrom);
+            panel.Controls.Add(numTo);
+            numFrom.ValueChanged += (s, e) =>
+            {
+                if (numFrom.Value > numTo.Value)
+                    numTo.Value = numFrom.Value;
+
+                slider.LowerValue = (int)numFrom.Value;
+                slider.UpperValue = (int)numTo.Value;
+
+                slider.Invalidate();
+            };
+
+            numTo.ValueChanged += (s, e) =>
+            {
+                if (numTo.Value < numFrom.Value)
+                    numFrom.Value = numTo.Value;
+
+                slider.LowerValue = (int)numFrom.Value;
+                slider.UpperValue = (int)numTo.Value;
+
+                slider.Invalidate();
+            };
+            slider.ValuesChanged += (s, e) =>
+            {
+                numFrom.Value = slider.LowerValue;
+                numTo.Value = slider.UpperValue;
+            };
         }
         public void GetExecutors()
         {
@@ -59,16 +99,6 @@ namespace WindowsFormsApp1
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-        private void RangeTrackBar1_ValuesChanged(object sender, EventArgs e)
-        {
-            label1.Text = sliderTime.LowerValue.ToString();
-            label2.Text = sliderTime.UpperValue.ToString();
-        }
-        private void RangeTrackBar2_ValuesChanged(object sender, EventArgs e)
-        {
-            label3.Text = sliderCost.LowerValue.ToString();
-            label4.Text = sliderCost.UpperValue.ToString();
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -112,16 +142,16 @@ namespace WindowsFormsApp1
     }
     public class RangeTrackBar : Control
     {
-        public int Minimum = 0;
-        public int Maximum = 100;
+        public int Minimum;
+        public int Maximum;
 
-        public int LowerValue = 20;
-        public int UpperValue = 80;
+        public int LowerValue;
+        public int UpperValue;
         int padding = 10;
         int thumbSize = 16;
         int radius => thumbSize / 2;
         public event EventHandler ValuesChanged;
-        public RangeTrackBar()
+        public RangeTrackBar(int min, int max)
         {
             this.Height = 32;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
@@ -129,6 +159,10 @@ namespace WindowsFormsApp1
                   ControlStyles.OptimizedDoubleBuffer |
                   ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
+            Minimum = min;
+            Maximum = max;
+            LowerValue = Minimum;
+            UpperValue = Maximum;
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {

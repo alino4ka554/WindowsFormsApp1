@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
         {
             var projectPage = new ProjectControl(projectId);
             projectPage.Tag = DataStorage.Projects[projectId].Name;
-            Form1 form = Application.OpenForms["Form1"] as Form1;
+            MainForm form = Application.OpenForms["Form1"] as MainForm;
             form?.HideSideMenu();
             form.OpenPage(projectPage);
         }
