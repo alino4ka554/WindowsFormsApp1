@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,13 +36,22 @@ namespace WindowsFormsApp1
             {
                 progressBar1.Value = value;
             });
-
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             await Task.Run(() =>
             {
                 _service.BuildSchedule(_params, progress);
             });
-
+            stopwatch.Stop();
             progressBar1.Visible = false;
+            double seconds = stopwatch.Elapsed.TotalSeconds;
+
+            MessageBox.Show(
+                $"Расписание построено за {seconds:F2} сек.",
+                "Время выполнения",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
