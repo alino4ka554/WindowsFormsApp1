@@ -22,14 +22,6 @@ namespace WindowsFormsApp1
         public OperationAdd(int _projectId)
         {
             InitializeComponent();
-            /*label1.Text = sliderTime.LowerValue.ToString();
-            label2.Text = sliderTime.UpperValue.ToString();
-            label3.Text = sliderCost.LowerValue.ToString();
-            label4.Text = sliderCost.UpperValue.ToString();
-            sliderTime.Dock = DockStyle.Fill;
-            sliderCost.Dock = DockStyle.Fill;
-            panel5.Controls.Add(sliderTime);
-            panel6.Controls.Add(sliderCost);*/
             ProjectId = _projectId;
            
             InitializeRangeTrackBar(sliderTime, numericUpDownFromTime, numericUpDownToTime, panel5);
@@ -89,8 +81,6 @@ namespace WindowsFormsApp1
         }
         public void GetPredecessors()
         {
-            //var listOps = DataStorage.Projects[ProjectId].Operations;
-            //listOps.Add(new Operation { Id = 0, Name = "- нет предшественника -" });
             checkedListBoxPrecessors.DataSource = DataStorage.Projects[ProjectId].Operations; ;
             checkedListBoxPrecessors.DisplayMember = "Name";
             checkedListBoxPrecessors.ValueMember = "Id"; 
